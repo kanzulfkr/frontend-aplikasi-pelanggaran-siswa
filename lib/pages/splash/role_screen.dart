@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../common/constant/aps_color.dart';
 import '../../common/widget/btn_primary.dart';
 import '../../common/widget/btn_secondary.dart';
 import '../auth/login_screen.dart';
@@ -8,8 +9,6 @@ class RoleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primaryTextTheme = Theme.of(context).primaryTextTheme;
-
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -21,9 +20,13 @@ class RoleScreen extends StatelessWidget {
                 child: Image.asset('assets/images/logo.png'),
               ),
               const Spacer(flex: 1),
-              Text(
+              const Text(
                 'Aplikasi Pelanggaran Siswa',
-                style: primaryTextTheme.displayLarge,
+                style: TextStyle(
+                  color: ApsColor.primaryColor,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               const Spacer(flex: 1),
@@ -54,13 +57,21 @@ class RoleScreen extends StatelessWidget {
                 ),
               ),
               const Spacer(flex: 4),
-              Text(
+              const Text(
                 'Dengan memilih salah satu, Anda menyetujuinya',
-                style: primaryTextTheme.labelMedium,
+                style: TextStyle(
+                  color: ApsColor.black,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              Text(
+              const Text(
                 'Ketentuan Layanan & Kebijakan Privasi',
-                style: primaryTextTheme.labelSmall,
+                style: TextStyle(
+                  color: ApsColor.primaryColor,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               const Spacer(flex: 1),
             ],

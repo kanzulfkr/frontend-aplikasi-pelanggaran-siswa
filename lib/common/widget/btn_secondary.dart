@@ -19,8 +19,8 @@ class _SecondaryButtonState extends State<SecondaryButton> {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: SiakadTheme.white,
-        foregroundColor: SiakadTheme.black,
+        backgroundColor: ApsColor.white,
+        foregroundColor: ApsColor.black,
         minimumSize: const Size(400, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

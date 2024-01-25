@@ -6,7 +6,6 @@ import '../../../data/datasources/auth_local_datasources.dart';
 import '../../../data/models/request/auth_request_models.dart';
 import '../../guru/g_main_screen.dart';
 import '../../siswa/s_main_screen.dart';
-import '../../../common/constant/roles_provider.dart';
 import 'pop_up_message.dart';
 
 class LoginButton extends StatelessWidget {
@@ -55,20 +54,20 @@ class LoginButton extends StatelessWidget {
             // );
             if (roles == '6' || roles == '7') {
               if (context.mounted) {
-                Navigator.pop(context);
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const SiswaMainScreen()),
+                  (Route<dynamic> route) => false,
                 );
               }
             } else {
               if (context.mounted) {
-                Navigator.pop(context);
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const GuruMainScreen()),
+                  (Route<dynamic> route) => false,
                 );
               }
             }

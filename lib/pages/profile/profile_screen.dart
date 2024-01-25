@@ -2,21 +2,21 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frontend_aps/pages/siswa/widget/pp_logout_alert_dialog.dart';
 import '../../bloc/getUser/get_user_bloc.dart';
-import '../../common/constant/aps_theme.dart';
+import '../../common/constant/aps_color.dart';
 import '../../common/widget/btn_warning.dart';
 import 'widget/pp_card_profile.dart';
+import 'widget/pp_logout_alert_dialog.dart';
 import 'widget/pp_profile_menu.dart';
 
-class SiswaProfileScreen extends StatefulWidget {
-  const SiswaProfileScreen({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<SiswaProfileScreen> createState() => _SiswaProfileScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _SiswaProfileScreenState extends State<SiswaProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     context.read<GetUserBloc>().add(const GetUserEvent.getProfile());
@@ -26,31 +26,26 @@ class _SiswaProfileScreenState extends State<SiswaProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final primaryTextTheme = Theme.of(context).primaryTextTheme;
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
-            const SizedBox(height: 40),
-            CardProfile(primaryTextTheme: primaryTextTheme),
-            const SizedBox(height: 20),
+            const CardProfile(),
             Container(
               padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 50, bottom: 20),
               width: double.maxFinite,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
-                color: SiakadTheme.white,
+                color: ApsColor.white,
                 boxShadow: [
                   BoxShadow(
                     offset: Offset(0, 3),
                     blurRadius: 2,
-                    color: SiakadTheme.grey,
+                    color: ApsColor.grey,
                     blurStyle: BlurStyle.normal,
                   )
                 ],
@@ -76,20 +71,20 @@ class _SiswaProfileScreenState extends State<SiswaProfileScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
             Container(
+              margin: const EdgeInsets.only(bottom: 60),
               padding: const EdgeInsets.all(20),
               width: double.maxFinite,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
-                color: SiakadTheme.white,
+                color: ApsColor.white,
                 boxShadow: [
                   BoxShadow(
                     offset: Offset(0, 3),
                     blurRadius: 2,
-                    color: SiakadTheme.grey,
+                    color: ApsColor.grey,
                     blurStyle: BlurStyle.normal,
                   )
                 ],
@@ -108,7 +103,6 @@ class _SiswaProfileScreenState extends State<SiswaProfileScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 40),
             WarningButton(
               name: 'Logout',
               onPress: () {

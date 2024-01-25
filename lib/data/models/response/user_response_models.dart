@@ -28,13 +28,13 @@ class UserProfileResponseModel {
 
 class Data {
   final int? id;
+  final int? studentId;
   final String? name;
   final String? email;
   final String? roles;
   final String? nip;
   final String? nisn;
   final String? jobTitle;
-  final String? studentId;
   final String? studentName;
   final String? phone;
   final String? gender;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_aps/common/constant/aps_theme.dart';
+import 'package:frontend_aps/common/constant/aps_color.dart';
 
 class PrimaryButton extends StatefulWidget {
   const PrimaryButton({
@@ -19,8 +19,8 @@ class _PrimaryButtonState extends State<PrimaryButton> {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: SiakadTheme.primaryColor,
-        foregroundColor: SiakadTheme.white,
+        backgroundColor: ApsColor.primaryColor,
+        foregroundColor: ApsColor.white,
         minimumSize: const Size(400, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

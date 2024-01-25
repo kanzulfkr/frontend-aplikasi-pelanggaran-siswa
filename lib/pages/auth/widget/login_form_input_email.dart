@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../common/constant/aps_theme.dart';
+import '../../../common/constant/aps_color.dart';
 
 class FormInputEmail extends StatelessWidget {
   const FormInputEmail({
@@ -18,7 +18,7 @@ class FormInputEmail extends StatelessWidget {
       decoration: const InputDecoration(
         hintText: 'your.name@email.com',
         hintStyle: TextStyle(
-          color: SiakadTheme.grey,
+          color: ApsColor.grey,
           letterSpacing: 0.2,
           fontSize: 14,
         ),

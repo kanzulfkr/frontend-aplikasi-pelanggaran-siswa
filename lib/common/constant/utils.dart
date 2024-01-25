@@ -1,2 +1,2 @@
 export 'asset_locations.dart';
-export 'aps_theme.dart';
+export 'aps_color.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_aps/common/constant/aps_theme.dart';
+import 'package:frontend_aps/common/constant/aps_color.dart';
 import '../../common/widget/btn_primary.dart';
 
 class Register extends StatefulWidget {
@@ -40,8 +40,7 @@ class _RegisterState extends State<Register> {
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Username',
-                hintStyle:
-                    TextStyle(color: SiakadTheme.grey, letterSpacing: 0.4),
+                hintStyle: TextStyle(color: ApsColor.grey, letterSpacing: 0.4),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(width: 0.5),
                   borderRadius: BorderRadius.all(
@@ -60,8 +59,7 @@ class _RegisterState extends State<Register> {
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Alamat',
-                hintStyle:
-                    TextStyle(color: SiakadTheme.grey, letterSpacing: 0.4),
+                hintStyle: TextStyle(color: ApsColor.grey, letterSpacing: 0.4),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(width: 0.5),
                   borderRadius: BorderRadius.all(
@@ -80,8 +78,7 @@ class _RegisterState extends State<Register> {
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Password',
-                hintStyle:
-                    TextStyle(color: SiakadTheme.grey, letterSpacing: 0.4),
+                hintStyle: TextStyle(color: ApsColor.grey, letterSpacing: 0.4),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(width: 0.5),
                   borderRadius: BorderRadius.all(
@@ -100,8 +97,7 @@ class _RegisterState extends State<Register> {
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Konfirmasi Password',
-                hintStyle:
-                    TextStyle(color: SiakadTheme.grey, letterSpacing: 0.4),
+                hintStyle: TextStyle(color: ApsColor.grey, letterSpacing: 0.4),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(width: 0.5),
                   borderRadius: BorderRadius.all(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../common/constant/aps_color.dart';
 import 'widget/login_button.dart';
 import 'widget/login_form_input_email.dart';
 import 'widget/login_form_input_password.dart';
@@ -26,12 +27,21 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final primaryTextTheme = Theme.of(context).primaryTextTheme;
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Masuk'),
+        title: const Text(
+          'Masuk',
+          style: TextStyle(
+            color: ApsColor.white,
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+          ),
+        ),
+        iconTheme: const IconThemeData(
+          color: ApsColor.white,
+        ),
         centerTitle: true,
+        backgroundColor: ApsColor.primaryColor,
       ),
       body: Form(
         key: _formKey,
@@ -39,31 +49,31 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.all(20),
           child: ListView(
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 100),
               const Text(
-                'Selamat Datang',
+                'Silahkan Login',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 18,
                   fontWeight: FontWeight.w700,
+                  fontFamily: '',
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 10),
               Text(
                 'Masuk sebagai ${widget.textTitle} dengan email dan password agar dapat mengakses aplikasi ini.',
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  fontFamily: 'Poppins',
                 ),
                 textAlign: TextAlign.justify,
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               const Text(
                 'Email',
                 style: TextStyle(
                   fontSize: 16,
-                  fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
+                  fontFamily: '',
                 ),
               ),
               const SizedBox(height: 5),
@@ -73,23 +83,13 @@ class _LoginState extends State<Login> {
                 'Kata Sandi',
                 style: TextStyle(
                   fontSize: 16,
-                  fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
+                  fontFamily: '',
                 ),
               ),
               const SizedBox(height: 5),
               FormInputPassword(passwordController: passwordController),
               const SizedBox(height: 20),
-              const Row(
-                children: [
-                  Icon(Icons.lock_outline),
-                  SizedBox(width: 8),
-                  Text(
-                    'Kami akan melindungi data anda.',
-                    style: TextStyle(fontSize: 13, fontFamily: 'Poppins'),
-                  )
-                ],
-              ),
               const SizedBox(height: 20),
               LoginButton(
                 emailController: emailController,
@@ -97,15 +97,23 @@ class _LoginState extends State<Login> {
                 formKey: _formKey,
               ),
               const SizedBox(height: 20),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Belum Punya Akun?',
-                      style: primaryTextTheme.labelMedium),
-                  TextButton(
-                    onPressed: () {},
-                    child:
-                        Text('Buat Akun', style: primaryTextTheme.labelSmall),
+                  Text(
+                    'Belum Punya Akun ?',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    ' Buat Akun',
+                    style: TextStyle(
+                      color: ApsColor.primaryColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   )
                 ],
               ),

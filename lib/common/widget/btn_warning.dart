@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_aps/common/constant/aps_theme.dart';
+import 'package:frontend_aps/common/constant/aps_color.dart';
 
 class WarningButton extends StatefulWidget {
   const WarningButton({
@@ -20,7 +20,7 @@ class _WarningButtonState extends State<WarningButton> {
     return TextButton(
       style: TextButton.styleFrom(
         backgroundColor: const Color.fromARGB(255, 215, 27, 14),
-        foregroundColor: SiakadTheme.black,
+        foregroundColor: ApsColor.black,
         minimumSize: const Size(400, 50),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

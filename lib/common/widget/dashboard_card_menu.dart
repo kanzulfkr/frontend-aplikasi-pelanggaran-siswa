@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-import '../../../common/constant/aps_theme.dart';
+import '../constant/aps_color.dart';
 
 class CardMenu extends StatelessWidget {
   const CardMenu({
     super.key,
-    required this.primaryTextTheme,
-    required this.name1,
-    required this.name2,
+    required this.firstTitle,
+    required this.secondTitle,
     required this.image,
     required this.color,
+    required this.onTap,
   });
 
-  final TextTheme primaryTextTheme;
-  final String name1;
-  final String name2;
+  final String firstTitle;
+  final String secondTitle;
   final String image;
   final Color color;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -35,26 +35,41 @@ class CardMenu extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                name1,
-                style: primaryTextTheme.displaySmall,
+                firstTitle,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: ApsColor.white,
+                ),
               ),
               Text(
-                name2,
-                style: primaryTextTheme.displaySmall,
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(30),
-                  ),
-                  color: SiakadTheme.white,
+                secondTitle,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: ApsColor.white,
                 ),
-                child: Text(
-                  'Lihat',
-                  style: primaryTextTheme.labelSmall,
+              ),
+              InkWell(
+                onTap: () => onTap(),
+                child: Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
+                    color: Color.fromARGB(255, 244, 244, 244),
+                  ),
+                  child: const Text(
+                    'Lihat',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: ApsColor.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ],

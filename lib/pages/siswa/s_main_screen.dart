@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_aps/pages/siswa/s_dashboard_screen.dart';
-import 'package:frontend_aps/pages/siswa/s_profile_screen.dart';
-import 'package:frontend_aps/common/constant/aps_theme.dart';
+import 'package:frontend_aps/pages/siswa/widget/point_component.dart';
+
+import '../../common/constant/aps_color.dart';
+import '../profile/profile_screen.dart';
+import 'pages/s_dashboard_screen.dart';
 
 class SiswaMainScreen extends StatefulWidget {
   const SiswaMainScreen({super.key});
@@ -13,8 +15,8 @@ class SiswaMainScreen extends StatefulWidget {
 class _SiswaMainScreenState extends State<SiswaMainScreen> {
   final _screens = [
     const SiswaDashboardScreen(),
-    const SiswaProfileScreen(),
-    const SiswaProfileScreen(),
+    const CheckPoinComponent(hideTitle: false),
+    const ProfileScreen(),
   ];
 
   int currentPageIndex = 0;
@@ -27,7 +29,7 @@ class _SiswaMainScreenState extends State<SiswaMainScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: NavigationBar(
-          backgroundColor: SiakadTheme.white,
+          backgroundColor: ApsColor.white,
           labelBehavior: labelBehavior,
           selectedIndex: currentPageIndex,
           onDestinationSelected: (int index) {
@@ -39,33 +41,33 @@ class _SiswaMainScreenState extends State<SiswaMainScreen> {
             NavigationDestination(
               selectedIcon: Icon(
                 Icons.home_filled,
-                color: SiakadTheme.primaryColor,
+                color: ApsColor.primaryColor,
               ),
               icon: Icon(
                 Icons.home_filled,
-                color: SiakadTheme.grey,
+                color: ApsColor.grey,
               ),
               label: 'Dashboard',
             ),
             NavigationDestination(
               selectedIcon: Icon(
                 Icons.insert_chart_outlined,
-                color: SiakadTheme.primaryColor,
+                color: ApsColor.primaryColor,
               ),
               icon: Icon(
                 Icons.insert_chart_outlined,
-                color: SiakadTheme.grey,
+                color: ApsColor.grey,
               ),
               label: 'College',
             ),
             NavigationDestination(
               selectedIcon: Icon(
                 Icons.person,
-                color: SiakadTheme.primaryColor,
+                color: ApsColor.primaryColor,
               ),
               icon: Icon(
                 Icons.person,
-                color: SiakadTheme.grey,
+                color: ApsColor.grey,
               ),
               label: 'Profile',
             ),

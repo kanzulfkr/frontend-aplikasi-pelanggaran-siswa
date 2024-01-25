@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../common/constant/aps_theme.dart';
+import '../../../common/constant/aps_color.dart';
 
 class FormInputPassword extends StatefulWidget {
   const FormInputPassword({
@@ -26,13 +26,14 @@ class _FormInputPasswordState extends State<FormInputPassword> {
       decoration: InputDecoration(
         hintText: 'Masukkan kata sandi anda',
         hintStyle: const TextStyle(
-          color: SiakadTheme.grey,
+          color: ApsColor.grey,
           letterSpacing: 0.2,
           fontSize: 14,
         ),
-        prefixIcon: const Padding(
-            padding: EdgeInsets.only(left: 8, right: 8),
-            child: Icon(Icons.password_outlined)),
+        prefixIcon: Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            child: Icon(
+                _isVisible ? Icons.lock_open_outlined : Icons.lock_outline)),
         suffixIcon: IconButton(
           onPressed: () {
             setState(() {
