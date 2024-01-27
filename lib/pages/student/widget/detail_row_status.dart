@@ -3,12 +3,12 @@ import 'package:frontend_aps/common/constant/aps_color.dart';
 
 class RowStatus extends StatelessWidget {
   const RowStatus({
-    required this.rightTitle,
     required this.leftTitle,
+    required this.rightTitle,
     super.key,
   });
-  final String rightTitle;
   final String leftTitle;
+  final String rightTitle;
 
   @override
   Widget build(BuildContext context) {

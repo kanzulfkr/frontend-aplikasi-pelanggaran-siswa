@@ -4,8 +4,8 @@ import '../../../bloc/login/login_bloc.dart';
 import '../../../common/widget/btn_primary.dart';
 import '../../../data/datasources/auth_local_datasources.dart';
 import '../../../data/models/request/auth_request_models.dart';
-import '../../guru/g_main_screen.dart';
-import '../../siswa/s_main_screen.dart';
+import '../../teacher/g_main_screen.dart';
+import '../../student/s_main_screen.dart';
 import 'pop_up_message.dart';
 
 class LoginButton extends StatelessWidget {
@@ -45,6 +45,7 @@ class LoginButton extends StatelessWidget {
           loaded: (data) async {
             AuthLocalDataSources().saveAuthData(data);
             final roles = data.data.roles;
+
             // await showDialog(
             //   context: context,
             //   builder: (context) => PopUpMessage(

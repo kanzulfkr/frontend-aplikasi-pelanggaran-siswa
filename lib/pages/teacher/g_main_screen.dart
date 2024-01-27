@@ -1,5 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
+import '../../bloc/getUser/get_user_bloc.dart';
+import '../../bloc/point/point_bloc.dart';
 import '../profile/profile_screen.dart';
 import 'pages/g_dashboard_screen.dart';
 
@@ -16,6 +21,13 @@ class _GuruMainScreenState extends State<GuruMainScreen> {
     const GuruDashboardScreen(),
     const ProfileScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetUserBloc>().add(const GetUserEvent.getProfile());
+    log("Get Guru User Api..");
+  }
 
   int currentPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior =

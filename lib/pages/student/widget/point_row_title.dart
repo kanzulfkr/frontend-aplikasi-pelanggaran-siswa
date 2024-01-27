@@ -9,13 +9,13 @@ class RowTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(top: 20, bottom: 50),
+      padding: EdgeInsets.only(top: 20, bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Poin Pelanggaran Siswa',
+            'Akumulasi Poin Siswa',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,

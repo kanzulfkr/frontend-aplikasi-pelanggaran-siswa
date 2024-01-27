@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_aps/common/constant/aps_color.dart';
+import '../../../common/constant/aps_color.dart';
 import '../../../common/widget/dashboard_card_menu.dart';
+import 's_check_point_screen.dart';
+import 's_detail_violation_screen.dart';
 
-class GuruDashboardScreen extends StatelessWidget {
-  const GuruDashboardScreen({super.key});
+class SiswaDashboardScreen extends StatelessWidget {
+  const SiswaDashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: ListView(
           children: [
-            const SizedBox(height: 20),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Menu Guru',
+                  'Aplikasi Pelanggaran Siswa',
                   style: TextStyle(
                     color: ApsColor.black,
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: FontWeight.w700,
                     fontFamily: '',
                   ),
@@ -44,36 +45,41 @@ class GuruDashboardScreen extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(30),
+                    Radius.circular(20),
                   ),
                 ),
                 prefixIcon: Icon(Icons.search_sharp),
                 prefixIconColor: ApsColor.grey,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 80),
             CardMenu(
               image: 'khs',
-              firstTitle: 'Validasi',
-              secondTitle: 'Pelanggaran',
+              firstTitle: 'Lihat Akumulasi',
+              secondTitle: 'Poin Siswa',
               color: ApsColor.dashboard1,
-              onTap: () {},
-            ),
-            const SizedBox(height: 20),
-            CardMenu(
-              image: 'matkul',
-              firstTitle: 'Tambah',
-              secondTitle: 'Pelanggaran',
-              color: ApsColor.dashboard2,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const CheckPointScreen(hideTitle: false)),
+                );
+              },
             ),
             const SizedBox(height: 30),
             CardMenu(
-              image: 'jadwal',
-              firstTitle: 'Cetak Laporan',
+              image: 'matkul',
+              firstTitle: 'Lihat Detail',
               secondTitle: 'Pelanggaran',
-              color: ApsColor.dashboard3,
-              onTap: () {},
+              color: ApsColor.dashboard2,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DetailViolationScreen()),
+                );
+              },
             ),
           ],
         ),

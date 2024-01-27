@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_aps/pages/splash/role_screen.dart';
+import 'package:frontend_aps/pages/check_login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const RoleScreen(),
+          builder: (context) => const CheckLogin(),
         ),
       );
     });

@@ -1,8 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:frontend_aps/pages/siswa/widget/point_component.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/getUser/get_user_bloc.dart';
+import '../../bloc/point/point_bloc.dart';
 import '../../common/constant/aps_color.dart';
 import '../profile/profile_screen.dart';
+import 'pages/s_check_point_screen.dart';
 import 'pages/s_dashboard_screen.dart';
 
 class SiswaMainScreen extends StatefulWidget {
@@ -15,9 +19,18 @@ class SiswaMainScreen extends StatefulWidget {
 class _SiswaMainScreenState extends State<SiswaMainScreen> {
   final _screens = [
     const SiswaDashboardScreen(),
-    const CheckPoinComponent(hideTitle: false),
+    const CheckPointScreen(hideTitle: true),
     const ProfileScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetUserBloc>().add(const GetUserEvent.getProfile());
+    log("Get User Api..");
+    context.read<PointBloc>().add(const PointEvent.getPoint());
+    log("Get Poin Api..");
+  }
 
   int currentPageIndex = 0;
   NavigationDestinationLabelBehavior labelBehavior =

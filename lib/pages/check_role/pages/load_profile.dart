@@ -1,31 +1,63 @@
 import 'package:flutter/material.dart';
-import '../../common/constant/aps_color.dart';
-import '../../common/widget/btn_warning.dart';
-import 'widget/pp_card_profile.dart';
-import 'widget/pp_logout_alert_dialog.dart';
-import 'widget/pp_profile_menu.dart';
+import 'package:frontend_aps/common/widget/skelton.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+import '../../../common/constant/aps_color.dart';
+import '../../../common/widget/btn_warning.dart';
+import '../../../pages/profile/widget/pp_logout_alert_dialog.dart';
+import '../../../pages/profile/widget/pp_profile_menu.dart';
 
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
+class LoadingProfile extends StatelessWidget {
+  const LoadingProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            const CardProfile(),
+            const SizedBox(height: 50),
+            Container(
+              height: 150,
+              width: double.maxFinite,
+              margin: const EdgeInsets.only(top: 40),
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                color: ApsColor.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 3),
+                    blurRadius: 2,
+                    blurStyle: BlurStyle.normal,
+                    color: ApsColor.grey,
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                      height: 80,
+                      margin: const EdgeInsets.only(right: 20, left: 5),
+                      child: const CircleSkeleton(size: 80)),
+                  const Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Skeleton(height: 25, width: 100),
+                      Skeleton(height: 25, width: 180),
+                      Skeleton(height: 25, width: 130),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 0),
             Container(
               padding: const EdgeInsets.all(20),
               margin: const EdgeInsets.only(top: 50, bottom: 20),

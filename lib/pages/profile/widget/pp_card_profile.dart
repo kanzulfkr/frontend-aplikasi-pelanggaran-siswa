@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/bloc/getUser/get_user_bloc.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
+import 'package:frontend_aps/pages/check_role/pages/load_profile.dart';
 
 class CardProfile extends StatelessWidget {
   const CardProfile({
@@ -13,10 +14,7 @@ class CardProfile extends StatelessWidget {
     return BlocBuilder<GetUserBloc, GetUserState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loading: () => const Padding(
-            padding: EdgeInsets.symmetric(vertical: 50),
-            child: Center(child: CircularProgressIndicator()),
-          ),
+          loading: () => const LoadingProfile(),
           loaded: (data) {
             return Container(
               height: 150,
@@ -142,7 +140,7 @@ class CardProfile extends StatelessWidget {
               ),
             );
           },
-          error: (message) => Center(child: Text(message)),
+          error: (message) => const LoadingProfile(),
           orElse: () => const Center(child: Text("User Not Found")),
         );
       },
