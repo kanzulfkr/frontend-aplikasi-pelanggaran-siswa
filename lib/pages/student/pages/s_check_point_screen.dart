@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend_aps/common/widget/custom_app_bar.dart';
 import 'package:frontend_aps/pages/student/widget/detail_card_student.dart';
 import 'package:frontend_aps/pages/student/widget/detail_row_status.dart';
 import 'package:frontend_aps/pages/student/widget/detail_row_subtitle.dart';
 import '../../../bloc/point/point_bloc.dart';
-import '../../../common/constant/aps_color.dart';
 import '../widget/loading/load_check_point.dart';
 import '../widget/point_progress_indicator.dart';
 import '../widget/point_row_title.dart';
@@ -35,19 +35,7 @@ class _CheckPointScreenState extends State<CheckPointScreen> {
     return Scaffold(
       appBar: widget.hideTitle
           ? null
-          : AppBar(
-              title: const Text(
-                'Akumulasi Poin Siswa',
-                style: TextStyle(
-                  color: ApsColor.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 18,
-                ),
-              ),
-              iconTheme: const IconThemeData(color: ApsColor.white),
-              backgroundColor: ApsColor.primaryColor,
-              centerTitle: true,
-            ),
+          : const CustomAppBar(title: 'Akumulasi Poin Siswa'),
       body: BlocBuilder<PointBloc, PointState>(
         builder: (context, state) {
           return state.maybeWhen(
@@ -59,7 +47,9 @@ class _CheckPointScreenState extends State<CheckPointScreen> {
                 child: ListView(
                   children: [
                     widget.hideTitle
-                        ? const RowTitle()
+                        ? const RowTitle(
+                            rowTitle: 'Akumulasi Poin Siswa',
+                          )
                         : const SizedBox(height: 20),
                     CardStudentPoin(
                         className: 'XI MIPA 2', studentName: item.name),
@@ -73,7 +63,8 @@ class _CheckPointScreenState extends State<CheckPointScreen> {
                     RowSubTitle(
                         leftTitle: 'Total Pelanggaran :',
                         rightTitle: item.violationTotal.toString()),
-                    RowStatus(leftTitle: 'Status', rightTitle: item.status),
+                    ColumnSubtitle(
+                        topTitle: 'Status', bottomTitle: item.status),
                     const Padding(
                       padding: EdgeInsets.only(top: 5, bottom: 15),
                       child: Divider(thickness: 1.5),

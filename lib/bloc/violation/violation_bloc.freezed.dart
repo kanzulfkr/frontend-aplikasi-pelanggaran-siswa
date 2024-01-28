@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'point_bloc.dart';
+part of 'violation_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PointEvent {
+mixin _$ViolationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getPoint,
+    required TResult Function() getViolation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getPoint,
+    TResult? Function()? getViolation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getPoint,
+    TResult Function()? getViolation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Point value) getPoint,
+    required TResult Function(_Violation value) getViolation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Point value)? getPoint,
+    TResult? Function(_Violation value)? getViolation,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Point value)? getPoint,
+    TResult Function(_Violation value)? getViolation,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PointEventCopyWith<$Res> {
-  factory $PointEventCopyWith(
-          PointEvent value, $Res Function(PointEvent) then) =
-      _$PointEventCopyWithImpl<$Res, PointEvent>;
+abstract class $ViolationEventCopyWith<$Res> {
+  factory $ViolationEventCopyWith(
+          ViolationEvent value, $Res Function(ViolationEvent) then) =
+      _$ViolationEventCopyWithImpl<$Res, ViolationEvent>;
 }
 
 /// @nodoc
-class _$PointEventCopyWithImpl<$Res, $Val extends PointEvent>
-    implements $PointEventCopyWith<$Res> {
-  _$PointEventCopyWithImpl(this._value, this._then);
+class _$ViolationEventCopyWithImpl<$Res, $Val extends ViolationEvent>
+    implements $ViolationEventCopyWith<$Res> {
+  _$ViolationEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$PointEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$ViolationEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -97,7 +97,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'PointEvent.started()';
+    return 'ViolationEvent.started()';
   }
 
   @override
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getPoint,
+    required TResult Function() getViolation,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getPoint,
+    TResult? Function()? getViolation,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getPoint,
+    TResult Function()? getViolation,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,7 +144,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Point value) getPoint,
+    required TResult Function(_Violation value) getViolation,
   }) {
     return started(this);
   }
@@ -153,7 +153,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Point value)? getPoint,
+    TResult? Function(_Violation value)? getViolation,
   }) {
     return started?.call(this);
   }
@@ -162,7 +162,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Point value)? getPoint,
+    TResult Function(_Violation value)? getViolation,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,40 +172,40 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements PointEvent {
+abstract class _Started implements ViolationEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$PointImplCopyWith<$Res> {
-  factory _$$PointImplCopyWith(
-          _$PointImpl value, $Res Function(_$PointImpl) then) =
-      __$$PointImplCopyWithImpl<$Res>;
+abstract class _$$ViolationImplCopyWith<$Res> {
+  factory _$$ViolationImplCopyWith(
+          _$ViolationImpl value, $Res Function(_$ViolationImpl) then) =
+      __$$ViolationImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PointImplCopyWithImpl<$Res>
-    extends _$PointEventCopyWithImpl<$Res, _$PointImpl>
-    implements _$$PointImplCopyWith<$Res> {
-  __$$PointImplCopyWithImpl(
-      _$PointImpl _value, $Res Function(_$PointImpl) _then)
+class __$$ViolationImplCopyWithImpl<$Res>
+    extends _$ViolationEventCopyWithImpl<$Res, _$ViolationImpl>
+    implements _$$ViolationImplCopyWith<$Res> {
+  __$$ViolationImplCopyWithImpl(
+      _$ViolationImpl _value, $Res Function(_$ViolationImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PointImpl implements _Point {
-  const _$PointImpl();
+class _$ViolationImpl implements _Violation {
+  const _$ViolationImpl();
 
   @override
   String toString() {
-    return 'PointEvent.getPoint()';
+    return 'ViolationEvent.getViolation()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PointImpl);
+        (other.runtimeType == runtimeType && other is _$ViolationImpl);
   }
 
   @override
@@ -215,29 +215,29 @@ class _$PointImpl implements _Point {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getPoint,
+    required TResult Function() getViolation,
   }) {
-    return getPoint();
+    return getViolation();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getPoint,
+    TResult? Function()? getViolation,
   }) {
-    return getPoint?.call();
+    return getViolation?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getPoint,
+    TResult Function()? getViolation,
     required TResult orElse(),
   }) {
-    if (getPoint != null) {
-      return getPoint();
+    if (getViolation != null) {
+      return getViolation();
     }
     return orElse();
   }
@@ -246,45 +246,45 @@ class _$PointImpl implements _Point {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Point value) getPoint,
+    required TResult Function(_Violation value) getViolation,
   }) {
-    return getPoint(this);
+    return getViolation(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_Point value)? getPoint,
+    TResult? Function(_Violation value)? getViolation,
   }) {
-    return getPoint?.call(this);
+    return getViolation?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Point value)? getPoint,
+    TResult Function(_Violation value)? getViolation,
     required TResult orElse(),
   }) {
-    if (getPoint != null) {
-      return getPoint(this);
+    if (getViolation != null) {
+      return getViolation(this);
     }
     return orElse();
   }
 }
 
-abstract class _Point implements PointEvent {
-  const factory _Point() = _$PointImpl;
+abstract class _Violation implements ViolationEvent {
+  const factory _Violation() = _$ViolationImpl;
 }
 
 /// @nodoc
-mixin _$PointState {
+mixin _$ViolationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserPointResponseModel point) loaded,
+    required TResult Function(List<Violation> violation) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -292,7 +292,7 @@ mixin _$PointState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserPointResponseModel point)? loaded,
+    TResult? Function(List<Violation> violation)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -300,7 +300,7 @@ mixin _$PointState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserPointResponseModel point)? loaded,
+    TResult Function(List<Violation> violation)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -333,16 +333,16 @@ mixin _$PointState {
 }
 
 /// @nodoc
-abstract class $PointStateCopyWith<$Res> {
-  factory $PointStateCopyWith(
-          PointState value, $Res Function(PointState) then) =
-      _$PointStateCopyWithImpl<$Res, PointState>;
+abstract class $ViolationStateCopyWith<$Res> {
+  factory $ViolationStateCopyWith(
+          ViolationState value, $Res Function(ViolationState) then) =
+      _$ViolationStateCopyWithImpl<$Res, ViolationState>;
 }
 
 /// @nodoc
-class _$PointStateCopyWithImpl<$Res, $Val extends PointState>
-    implements $PointStateCopyWith<$Res> {
-  _$PointStateCopyWithImpl(this._value, this._then);
+class _$ViolationStateCopyWithImpl<$Res, $Val extends ViolationState>
+    implements $ViolationStateCopyWith<$Res> {
+  _$ViolationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -359,7 +359,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$PointStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ViolationStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -373,7 +373,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'PointState.initial()';
+    return 'ViolationState.initial()';
   }
 
   @override
@@ -390,7 +390,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserPointResponseModel point) loaded,
+    required TResult Function(List<Violation> violation) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -401,7 +401,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserPointResponseModel point)? loaded,
+    TResult? Function(List<Violation> violation)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -412,7 +412,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserPointResponseModel point)? loaded,
+    TResult Function(List<Violation> violation)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -460,7 +460,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements PointState {
+abstract class _Initial implements ViolationState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -473,7 +473,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$PointStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ViolationStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -487,7 +487,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'PointState.loading()';
+    return 'ViolationState.loading()';
   }
 
   @override
@@ -504,7 +504,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserPointResponseModel point) loaded,
+    required TResult Function(List<Violation> violation) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -515,7 +515,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserPointResponseModel point)? loaded,
+    TResult? Function(List<Violation> violation)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -526,7 +526,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserPointResponseModel point)? loaded,
+    TResult Function(List<Violation> violation)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -574,7 +574,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements PointState {
+abstract class _Loading implements ViolationState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -584,12 +584,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UserPointResponseModel point});
+  $Res call({List<Violation> violation});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$PointStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ViolationStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -598,13 +598,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? point = null,
+    Object? violation = null,
   }) {
     return _then(_$LoadedImpl(
-      null == point
-          ? _value.point
-          : point // ignore: cast_nullable_to_non_nullable
-              as UserPointResponseModel,
+      null == violation
+          ? _value._violation
+          : violation // ignore: cast_nullable_to_non_nullable
+              as List<Violation>,
     ));
   }
 }
@@ -612,14 +612,19 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.point);
+  const _$LoadedImpl(final List<Violation> violation) : _violation = violation;
 
+  final List<Violation> _violation;
   @override
-  final UserPointResponseModel point;
+  List<Violation> get violation {
+    if (_violation is EqualUnmodifiableListView) return _violation;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_violation);
+  }
 
   @override
   String toString() {
-    return 'PointState.loaded(point: $point)';
+    return 'ViolationState.loaded(violation: $violation)';
   }
 
   @override
@@ -627,11 +632,13 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.point, point) || other.point == point));
+            const DeepCollectionEquality()
+                .equals(other._violation, _violation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, point);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_violation));
 
   @JsonKey(ignore: true)
   @override
@@ -644,10 +651,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserPointResponseModel point) loaded,
+    required TResult Function(List<Violation> violation) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(point);
+    return loaded(violation);
   }
 
   @override
@@ -655,10 +662,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserPointResponseModel point)? loaded,
+    TResult? Function(List<Violation> violation)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(point);
+    return loaded?.call(violation);
   }
 
   @override
@@ -666,12 +673,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserPointResponseModel point)? loaded,
+    TResult Function(List<Violation> violation)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(point);
+      return loaded(violation);
     }
     return orElse();
   }
@@ -714,10 +721,10 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements PointState {
-  const factory _Loaded(final UserPointResponseModel point) = _$LoadedImpl;
+abstract class _Loaded implements ViolationState {
+  const factory _Loaded(final List<Violation> violation) = _$LoadedImpl;
 
-  UserPointResponseModel get point;
+  List<Violation> get violation;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -734,7 +741,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$PointStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$ViolationStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -764,7 +771,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'PointState.error(message: $message)';
+    return 'ViolationState.error(message: $message)';
   }
 
   @override
@@ -789,7 +796,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(UserPointResponseModel point) loaded,
+    required TResult Function(List<Violation> violation) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -800,7 +807,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(UserPointResponseModel point)? loaded,
+    TResult? Function(List<Violation> violation)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -811,7 +818,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(UserPointResponseModel point)? loaded,
+    TResult Function(List<Violation> violation)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -859,7 +866,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements PointState {
+abstract class _Error implements ViolationState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;

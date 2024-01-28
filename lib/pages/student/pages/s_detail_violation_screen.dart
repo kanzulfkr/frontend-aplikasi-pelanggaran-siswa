@@ -2,22 +2,24 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frontend_aps/pages/student/widget/loading/load_detail_violation%20.dart';
+import 'package:frontend_aps/common/widget/custom_app_bar.dart';
+import 'package:frontend_aps/pages/student/widget/loading/load_detail_violation.dart';
 import '../../../bloc/point/point_bloc.dart';
-import '../../../common/constant/aps_color.dart';
 import '../widget/detail_card_student.dart';
 import '../widget/detail_row_status.dart';
 import '../widget/detail_row_subtitle.dart';
 import '../widget/detail_row_violations.dart';
 
-class DetailViolationScreen extends StatefulWidget {
-  const DetailViolationScreen({super.key});
+class DetailSiswaViolationScreen extends StatefulWidget {
+  const DetailSiswaViolationScreen({super.key});
 
   @override
-  State<DetailViolationScreen> createState() => _DetailViolationScreenState();
+  State<DetailSiswaViolationScreen> createState() =>
+      _DetailSiswaViolationScreenState();
 }
 
-class _DetailViolationScreenState extends State<DetailViolationScreen> {
+class _DetailSiswaViolationScreenState
+    extends State<DetailSiswaViolationScreen> {
   @override
   void initState() {
     super.initState();
@@ -28,25 +30,11 @@ class _DetailViolationScreenState extends State<DetailViolationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Detail Pelanggaran Siswa',
-          style: TextStyle(
-            color: ApsColor.white,
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
-        iconTheme: const IconThemeData(
-          color: ApsColor.white,
-        ),
-        centerTitle: true,
-        backgroundColor: ApsColor.primaryColor,
-      ),
+      appBar: const CustomAppBar(title: 'Detail Pelanggaran Siswa'),
       body: BlocBuilder<PointBloc, PointState>(
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const LoadingDetailViolation(),
+            loading: () => const LoadingDetailStudentViolation(),
             loaded: (data) {
               var item = data.point;
               int lengthData = (data.point.violations.length);
@@ -64,9 +52,9 @@ class _DetailViolationScreenState extends State<DetailViolationScreen> {
                       leftTitle: 'Total Poin :',
                       rightTitle: item.pointTotal.toString(),
                     ),
-                    RowStatus(
-                      leftTitle: 'Status :',
-                      rightTitle: item.status,
+                    ColumnSubtitle(
+                      topTitle: 'Status :',
+                      bottomTitle: item.status,
                     ),
                     const RowSubTitle(
                       leftTitle: 'Data Pelanggaran :',
@@ -107,7 +95,7 @@ class _DetailViolationScreenState extends State<DetailViolationScreen> {
                 ),
               );
             },
-            error: (message) => const LoadingDetailViolation(),
+            error: (message) => const LoadingDetailStudentViolation(),
             orElse: () => const Center(child: Text("No Data")),
           );
         },

@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/getUser/get_user_bloc.dart';
-import '../../bloc/point/point_bloc.dart';
 import '../../common/constant/aps_color.dart';
 import '../profile/profile_screen.dart';
 import 'pages/s_check_point_screen.dart';
@@ -27,9 +26,9 @@ class _SiswaMainScreenState extends State<SiswaMainScreen> {
   void initState() {
     super.initState();
     context.read<GetUserBloc>().add(const GetUserEvent.getProfile());
-    log("Get User Api..");
-    context.read<PointBloc>().add(const PointEvent.getPoint());
-    log("Get Poin Api..");
+    log("Get User in SiswaMainScreen");
+    // context.read<PointBloc>().add(const PointEvent.getPoint());
+    // log("Get Poin Api..");
   }
 
   int currentPageIndex = 0;

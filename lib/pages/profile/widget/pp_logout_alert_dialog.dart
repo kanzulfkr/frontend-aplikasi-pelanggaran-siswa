@@ -78,11 +78,13 @@ class LogoutAlertDialog extends StatelessWidget {
           loaded: (success) async {
             await AuthLocalDataSources().removeToken();
             if (context.mounted) {
-              Navigator.pushReplacement(
+              Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => const RoleScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const RoleScreen(),
+                ),
+                (Route<dynamic> route) => false,
               );
-              // }
             }
           },
           error: (error) async {

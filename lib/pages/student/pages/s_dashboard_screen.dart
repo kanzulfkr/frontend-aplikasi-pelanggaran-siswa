@@ -77,7 +77,7 @@ class SiswaDashboardScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const DetailViolationScreen()),
+                      builder: (context) => const DetailSiswaViolationScreen()),
                 );
               },
             ),

@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
-class Skeleton extends StatelessWidget {
-  const Skeleton({Key? key, this.height, this.width}) : super(key: key);
+class Skelton extends StatelessWidget {
+  const Skelton({Key? key, this.height, this.width}) : super(key: key);
 
   final double? height, width;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      padding: const EdgeInsets.all(16.0 / 2),
-      decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.06),
-          borderRadius: const BorderRadius.all(Radius.circular(16.0))),
+    return Shimmer.fromColors(
+      baseColor: Colors.black.withOpacity(0.09),
+      highlightColor: Colors.black.withOpacity(0.04),
+      direction: ShimmerDirection.ltr,
+      child: Container(
+        height: height,
+        width: width,
+        decoration: const BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.all(Radius.circular(16.0))),
+      ),
     );
   }
 }
@@ -25,12 +30,17 @@ class CircleSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: size,
-      width: size,
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.06),
-        shape: BoxShape.circle,
+    return Shimmer.fromColors(
+      baseColor: Colors.black.withOpacity(0.09),
+      highlightColor: Colors.black.withOpacity(0.04),
+      direction: ShimmerDirection.ltr,
+      child: Container(
+        height: size,
+        width: size,
+        decoration: const BoxDecoration(
+          color: Colors.black,
+          shape: BoxShape.circle,
+        ),
       ),
     );
   }

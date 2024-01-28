@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/bloc/getUser/get_user_bloc.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
-import 'package:frontend_aps/pages/check_role/pages/load_profile.dart';
+import 'package:frontend_aps/pages/main_screen/pages/load_profile.dart';
 
 class CardProfile extends StatelessWidget {
   const CardProfile({

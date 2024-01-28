@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_aps/common/widget/skelton.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../../common/constant/aps_color.dart';
-import '../../../../common/widget/btn_secondary.dart';
-import '../../pages/s_detail_violation_screen.dart';
 
-class LoadingDetailViolation extends StatelessWidget {
-  const LoadingDetailViolation({
+class LoadingDetailStudentViolation extends StatelessWidget {
+  const LoadingDetailStudentViolation({
     super.key,
   });
   @override
@@ -33,8 +30,8 @@ class LoadingDetailViolation extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Skeleton(height: 20, width: 200),
-                        Skeleton(height: 20, width: 150),
+                        Skelton(height: 20, width: 200),
+                        Skelton(height: 20, width: 150),
                       ],
                     ),
                   )
@@ -53,7 +50,7 @@ class LoadingDetailViolation extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Skeleton(height: 25, width: 100)
+                Skelton(height: 25, width: 100)
               ],
             ),
             const Padding(
@@ -67,7 +64,7 @@ class LoadingDetailViolation extends StatelessWidget {
                 ),
               ),
             ),
-            const Skeleton(height: 35, width: 0),
+            const Skelton(height: 35, width: 0),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Row(
@@ -97,19 +94,19 @@ class LoadingDetailViolation extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Skeleton(height: 20, width: 240),
+                      Skelton(height: 20, width: 240),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Skeleton(height: 20, width: 240),
+                        child: Skelton(height: 20, width: 240),
                       ),
-                      Skeleton(height: 20, width: 100),
+                      Skelton(height: 20, width: 100),
                     ],
                   ),
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                 ],
               ),
             ),
@@ -119,19 +116,19 @@ class LoadingDetailViolation extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Skeleton(height: 20, width: 240),
+                      Skelton(height: 20, width: 240),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Skeleton(height: 20, width: 240),
+                        child: Skelton(height: 20, width: 240),
                       ),
-                      Skeleton(height: 20, width: 100),
+                      Skelton(height: 20, width: 100),
                     ],
                   ),
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                 ],
               ),
             ),
@@ -141,19 +138,19 @@ class LoadingDetailViolation extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Skeleton(height: 20, width: 240),
+                      Skelton(height: 20, width: 240),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Skeleton(height: 20, width: 240),
+                        child: Skelton(height: 20, width: 240),
                       ),
-                      Skeleton(height: 20, width: 100),
+                      Skelton(height: 20, width: 100),
                     ],
                   ),
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                 ],
               ),
             ),
@@ -163,19 +160,19 @@ class LoadingDetailViolation extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Skeleton(height: 20, width: 240),
+                      Skelton(height: 20, width: 240),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Skeleton(height: 20, width: 240),
+                        child: Skelton(height: 20, width: 240),
                       ),
-                      Skeleton(height: 20, width: 100),
+                      Skelton(height: 20, width: 100),
                     ],
                   ),
-                  Skeleton(height: 20, width: 30),
+                  Skelton(height: 20, width: 30),
                 ],
               ),
             ),

@@ -1,15 +1,15 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frontend_aps/pages/teacher/pages/g_dashboard_screen.dart';
+import 'package:frontend_aps/pages/teacher/pages/t_dashboard_screen.dart';
 import 'package:frontend_aps/pages/student/pages/s_check_point_screen.dart';
 import 'package:frontend_aps/pages/student/pages/s_dashboard_screen.dart';
+import 'package:frontend_aps/pages/teacher/pages/t_violation_screen.dart';
 import '../../../../bloc/getUser/get_user_bloc.dart';
 import '../../../../common/constant/aps_color.dart';
+import '../../common/constant/list_bottom_navigation.dart';
 import '../profile/profile_screen.dart';
 import 'default_main_screen.dart';
-import '../../common/constant/list_bottom_navigation.dart';
 
 class CheckRole extends StatefulWidget {
   const CheckRole({super.key});
@@ -26,7 +26,7 @@ class _CheckRoleState extends State<CheckRole> {
   ];
   final _guruScreens = [
     const GuruDashboardScreen(),
-    const GuruDashboardScreen(),
+    const ViolationScreen(hideTitleV: true),
     const ProfileScreen(),
   ];
 

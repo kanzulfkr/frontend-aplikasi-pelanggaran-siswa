@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
 
-class RowStatus extends StatelessWidget {
-  const RowStatus({
-    required this.leftTitle,
-    required this.rightTitle,
+class ColumnSubtitle extends StatelessWidget {
+  const ColumnSubtitle({
+    required this.topTitle,
+    required this.bottomTitle,
     super.key,
   });
-  final String leftTitle;
-  final String rightTitle;
+  final String topTitle;
+  final String bottomTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RowStatus extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            leftTitle,
+            topTitle,
             style: const TextStyle(
               color: ApsColor.primaryColor,
               fontSize: 15,
@@ -28,7 +28,7 @@ class RowStatus extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            rightTitle,
+            bottomTitle,
             style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w500,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_aps/common/widget/custom_app_bar.dart';
 import '../../common/constant/aps_color.dart';
 import 'widget/login_button.dart';
 import 'widget/login_form_input_email.dart';
@@ -28,21 +29,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Masuk',
-          style: TextStyle(
-            color: ApsColor.white,
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
-          ),
-        ),
-        iconTheme: const IconThemeData(
-          color: ApsColor.white,
-        ),
-        centerTitle: true,
-        backgroundColor: ApsColor.primaryColor,
-      ),
+      appBar: const CustomAppBar(title: 'Masuk'),
       body: Form(
         key: _formKey,
         child: Padding(

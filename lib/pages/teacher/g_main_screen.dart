@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
+import 'package:frontend_aps/pages/teacher/pages/t_violation_screen.dart';
 import '../../bloc/getUser/get_user_bloc.dart';
-import '../../bloc/point/point_bloc.dart';
 import '../profile/profile_screen.dart';
-import 'pages/g_dashboard_screen.dart';
+import 'pages/t_dashboard_screen.dart';
 
 class GuruMainScreen extends StatefulWidget {
   const GuruMainScreen({super.key});
@@ -18,7 +18,7 @@ class GuruMainScreen extends StatefulWidget {
 class _GuruMainScreenState extends State<GuruMainScreen> {
   final _screens = [
     const GuruDashboardScreen(),
-    const GuruDashboardScreen(),
+    const ViolationScreen(hideTitleV: true),
     const ProfileScreen(),
   ];
 
@@ -26,7 +26,9 @@ class _GuruMainScreenState extends State<GuruMainScreen> {
   void initState() {
     super.initState();
     context.read<GetUserBloc>().add(const GetUserEvent.getProfile());
-    log("Get Guru User Api..");
+    log("Get User in GuruMainScreen");
+    // context.read<ViolationBloc>().add(const ViolationEvent.getViolation());
+    // log("Get Violation Api..");
   }
 
   int currentPageIndex = 0;

@@ -46,7 +46,7 @@ class UserRemoteDataSources {
     if (response.statusCode == 200) {
       return Right(UserPointResponseModel.fromJson(response.body));
     } else {
-      return const Left("Failed fetching user profile");
+      return const Left("Failed fetching point user");
     }
   }
 }

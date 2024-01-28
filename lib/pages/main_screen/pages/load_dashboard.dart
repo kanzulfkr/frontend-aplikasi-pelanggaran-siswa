@@ -35,7 +35,7 @@ class LoadingDashboard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 30),
-            const Skeleton(height: 60, width: double.maxFinite),
+            const Skelton(height: 60, width: double.maxFinite),
             SizedBox(
               height: 550,
               child: ListView.builder(
@@ -65,9 +65,9 @@ class LoadingDashboard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Skeleton(height: 25, width: 150),
-                            Skeleton(height: 25, width: 150),
-                            Skeleton(height: 25, width: 100),
+                            Skelton(height: 25, width: 150),
+                            Skelton(height: 25, width: 150),
+                            Skelton(height: 25, width: 100),
                           ],
                         ),
                         Container(

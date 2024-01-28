@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
+import 'package:frontend_aps/pages/teacher/pages/t_add_violation_screen.dart';
+import 'package:provider/provider.dart';
+import '../../../bloc/search/student_provider.dart';
 import '../../../common/widget/dashboard_card_menu.dart';
+import 't_validation_screen.dart';
+import 't_violation_screen.dart';
 
 class GuruDashboardScreen extends StatelessWidget {
   const GuruDashboardScreen({super.key});
@@ -57,7 +62,14 @@ class GuruDashboardScreen extends StatelessWidget {
               firstTitle: 'Validasi',
               secondTitle: 'Pelanggaran',
               color: ApsColor.dashboard1,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ValidationScreen(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 20),
             CardMenu(
@@ -65,7 +77,20 @@ class GuruDashboardScreen extends StatelessWidget {
               firstTitle: 'Tambah',
               secondTitle: 'Pelanggaran',
               color: ApsColor.dashboard2,
-              onTap: () {},
+              onTap: () {
+                final searchProv =
+                    Provider.of<SearchProvider>(context, listen: false);
+                searchProv.setStudentId(null);
+                searchProv.setViolationTypesId(null);
+                searchProv.setStudentController('');
+                searchProv.setViolationTypesController('');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddViolationScreen(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 30),
             CardMenu(
@@ -73,7 +98,15 @@ class GuruDashboardScreen extends StatelessWidget {
               firstTitle: 'Lihat Data',
               secondTitle: 'Pelanggaran',
               color: ApsColor.dashboard3,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const ViolationScreen(hideTitleV: false),
+                  ),
+                );
+              },
             ),
           ],
         ),

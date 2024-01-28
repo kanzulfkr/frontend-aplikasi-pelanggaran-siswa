@@ -3,8 +3,8 @@ import 'package:frontend_aps/common/widget/skelton.dart';
 
 import '../../../common/constant/aps_color.dart';
 import '../../../common/widget/btn_warning.dart';
-import '../../../pages/profile/widget/pp_logout_alert_dialog.dart';
-import '../../../pages/profile/widget/pp_profile_menu.dart';
+import '../../profile/widget/pp_logout_alert_dialog.dart';
+import '../../profile/widget/pp_profile_menu.dart';
 
 class LoadingProfile extends StatelessWidget {
   const LoadingProfile({super.key});
@@ -49,9 +49,9 @@ class LoadingProfile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Skeleton(height: 25, width: 100),
-                      Skeleton(height: 25, width: 180),
-                      Skeleton(height: 25, width: 130),
+                      Skelton(height: 25, width: 100),
+                      Skelton(height: 25, width: 180),
+                      Skelton(height: 25, width: 130),
                     ],
                   ),
                 ],

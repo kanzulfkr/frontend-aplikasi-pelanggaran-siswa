@@ -82,7 +82,7 @@ class LoginButton extends StatelessWidget {
               ),
             );
           },
-          orElse: () {},
+          orElse: () => const Center(child: Text('Lemot')),
         );
       },
     );

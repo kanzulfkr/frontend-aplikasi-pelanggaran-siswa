@@ -20,7 +20,9 @@ class LoadingCheckPoint extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            hideTitle ? const RowTitle() : const SizedBox(height: 20),
+            hideTitle
+                ? const RowTitle(rowTitle: 'Akumulasi Poin Siswa')
+                : const SizedBox(height: 20),
             SizedBox(
               height: 60,
               child: Row(
@@ -36,8 +38,8 @@ class LoadingCheckPoint extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Skeleton(height: 20, width: 200),
-                        Skeleton(height: 20, width: 150),
+                        Skelton(height: 20, width: 200),
+                        Skelton(height: 20, width: 150),
                       ],
                     ),
                   )
@@ -57,7 +59,7 @@ class LoadingCheckPoint extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Skeleton(height: 25, width: 100)
+                Skelton(height: 25, width: 100)
               ],
             ),
             const Padding(
@@ -73,7 +75,7 @@ class LoadingCheckPoint extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Skeleton(height: 25, width: 100)
+                  Skelton(height: 25, width: 100)
                 ],
               ),
             ),
@@ -87,7 +89,7 @@ class LoadingCheckPoint extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 15),
-              child: Skeleton(height: 35, width: 0),
+              child: Skelton(height: 35, width: 0),
             ),
             const Divider(thickness: 1.5),
             const SizedBox(height: 10),
@@ -97,12 +99,12 @@ class LoadingCheckPoint extends StatelessWidget {
               animationDuration: 1000,
               radius: 120,
               lineWidth: 40,
-              percent: 1,
+              percent: 0,
               progressColor: Colors.indigo.shade200,
               backgroundColor: Colors.indigo.shade100,
               circularStrokeCap: CircularStrokeCap.round,
               animateFromLastPercent: true,
-              center: const Skeleton(height: 30, width: 70),
+              center: const Skelton(height: 30, width: 70),
               footer: Padding(
                 padding: const EdgeInsets.only(top: 20, right: 50, left: 50),
                 child: SecondaryButton(
@@ -112,7 +114,7 @@ class LoadingCheckPoint extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const DetailViolationScreen()),
+                                const DetailSiswaViolationScreen()),
                       );
                     }),
               ),
