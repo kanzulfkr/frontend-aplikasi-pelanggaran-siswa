@@ -2,24 +2,32 @@ import 'package:flutter/material.dart';
 
 import '../../data/datasources/search_remote_datasources.dart';
 
-enum GetStationStatus { empty, loading, success, error }
+enum SearchProviderStatus { empty, loading, success, error }
 
-class SearchProvider extends ChangeNotifier {
+class StoreViolationProvider extends ChangeNotifier {
   List<dynamic> _searchStudent = [];
   List<dynamic> get allStudent => _searchStudent;
   List<dynamic> _searchViolationTypes = [];
   List<dynamic> get allViolationTypes => _searchViolationTypes;
 
   int? _studentId;
-  int? get getstudentId => _studentId;
+  int? get getStudentId => _studentId;
+  int? _officerId;
+  int? get getOfficerId => _officerId;
   int? _violationTypesId;
-  int? get getviolationTypesId => _violationTypesId;
+  int? get getViolationTypesId => _violationTypesId;
 
   TextEditingController studentController = TextEditingController();
+  TextEditingController officerController = TextEditingController();
   TextEditingController violationTypesController = TextEditingController();
 
   Future<void> setStudentId(int? id) async {
     _studentId = id;
+    notifyListeners();
+  }
+
+  Future<void> setOfficerId(int? id) async {
+    _officerId = id;
     notifyListeners();
   }
 
@@ -30,6 +38,11 @@ class SearchProvider extends ChangeNotifier {
 
   void setStudentController(String value) {
     studentController.text = value;
+    notifyListeners();
+  }
+
+  void setOfficerController(String value) {
+    officerController.text = value;
     notifyListeners();
   }
 

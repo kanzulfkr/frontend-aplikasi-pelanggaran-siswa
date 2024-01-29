@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../provider/store_violation_provider.dart';
 import '../widget/search_all_data_list.dart';
 import '../../../common/constant/aps_color.dart';
 import '../widget/search_found_data_list.dart';
-import '../../../bloc/search/student_provider.dart';
 import '../widget/search_not_found_student_list.dart';
 
 class AddSearchScreen extends StatefulWidget {
@@ -29,30 +29,13 @@ class _AddSearchScreenState extends State<AddSearchScreen> {
 
   @override
   void initState() {
-    final searchProvider = Provider.of<SearchProvider>(context, listen: false);
-    allStudents = searchProvider.allStudent;
-    allViolationTypes = searchProvider.allViolationTypes;
+    final storeProv =
+        Provider.of<StoreViolationProvider>(context, listen: false);
+    allStudents = storeProv.allStudent;
+    allViolationTypes = storeProv.allViolationTypes;
     super.initState();
   }
 
-  // Future.microtask(() => searchProvider.getSearchStudent());
-  // getData();
-  // getData() async {
-  //   final resStudent = await http.get(
-  //     Uri.parse('${Variables.baseUrl}/api/student'),
-  //   );
-  //   final Map<String, dynamic> jsonStudents = json.decode(resStudent.body);
-  //   allStudents = jsonStudents['student'];
-  //   final resVioType = await http.get(
-  //     Uri.parse('${Variables.baseUrl}/api/violations-types'),
-  //   );
-  //   final Map<String, dynamic> jsonVioType = json.decode(resVioType.body);
-  //   allViolationTypes = jsonVioType['violation-types'];
-  // if (allStudents.isNotEmpty && allViolationTypes.isNotEmpty) {
-  //   log('students & teacher available !');
-  // }
-  // setState(() {});
-  // }
   void _studentsFilter(String enteredKeyword) {
     List<dynamic> results = [];
     if (enteredKeyword.isEmpty) {

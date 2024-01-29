@@ -3,9 +3,13 @@ import 'package:frontend_aps/data/models/response/violation_response_models.dart
 import 'package:frontend_aps/pages/teacher/pages/t_detail_violation_screen.dart';
 import 'package:frontend_aps/pages/teacher/pages/t_update_violation_screen.dart';
 import 'package:frontend_aps/pages/teacher/widget/delete_alert_dialog.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
-class CustomListTile extends StatelessWidget {
-  const CustomListTile({
+import '../../../provider/store_violation_provider.dart';
+
+class ListTileViolation extends StatelessWidget {
+  const ListTileViolation({
     super.key,
     required this.violation,
     required this.i,
@@ -46,11 +50,12 @@ class CustomListTile extends StatelessWidget {
               overflow: TextOverflow.fade,
               maxLines: 2,
             ),
-            subtitle: const Text(
-              'X MIPA 1',
-              style: TextStyle(fontSize: 15),
+            subtitle: Text(
+              DateFormat("dd MMM yyyy").format(violation.createdAt!),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
             ),
             trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   padding:
@@ -69,7 +74,7 @@ class CustomListTile extends StatelessWidget {
                     style: TextStyle(
                       color: violation.isValidate == 1
                           ? const Color(0xFF31AA26)
-                          : const Color(0xFFEB5757),
+                          : const Color.fromARGB(255, 205, 28, 28),
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
                     ),
@@ -78,12 +83,19 @@ class CustomListTile extends StatelessWidget {
                 violation.isValidate == 1
                     ? const SizedBox()
                     : SizedBox(
-                        width: 70,
+                        width: 80,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             GestureDetector(
                               onTap: () {
+                                final storeProv =
+                                    Provider.of<StoreViolationProvider>(context,
+                                        listen: false);
+                                storeProv.setStudentId(null);
+                                storeProv.setViolationTypesId(null);
+                                storeProv.setStudentController('');
+                                storeProv.setViolationTypesController('');
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -99,7 +111,9 @@ class CustomListTile extends StatelessWidget {
                                 showDialog(
                                   context: context,
                                   builder: (context) {
-                                    return const DeleteViolationAlertDialog();
+                                    return DeleteViolationAlertDialog(
+                                      id: violation.id!,
+                                    );
                                   },
                                 );
                               },

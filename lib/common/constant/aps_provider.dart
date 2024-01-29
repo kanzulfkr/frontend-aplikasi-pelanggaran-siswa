@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/bloc/point/point_bloc.dart';
-import 'package:frontend_aps/bloc/search/student_provider.dart';
+import 'package:frontend_aps/bloc/storeViolation/store_violation_bloc.dart';
 import 'package:frontend_aps/bloc/violation/violation_bloc.dart';
 import 'package:frontend_aps/data/datasources/violation_remote_datasources.dart';
+import 'package:frontend_aps/provider/delete_violations_provider.dart';
 import 'package:provider/provider.dart';
 import '../../bloc/getUser/get_user_bloc.dart';
 import '../../bloc/login/login_bloc.dart';
 import '../../bloc/logout/logout_bloc.dart';
 import '../../data/datasources/auth_remote_datasources.dart';
 import '../../data/datasources/user_remote_datasources.dart';
+import '../../provider/store_violation_provider.dart';
 
 class APSProvider extends StatelessWidget {
   final Widget child;
@@ -37,11 +39,17 @@ class APSProvider extends StatelessWidget {
         BlocProvider(
           create: (context) => ViolationBloc(ViolationRemoteDataSources()),
         ),
+        BlocProvider(
+          create: (context) => StoreViolationBloc(),
+        ),
       ],
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) => SearchProvider(),
+            create: (context) => StoreViolationProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => DeleteViolationProvider(),
           ),
         ],
         child: child,

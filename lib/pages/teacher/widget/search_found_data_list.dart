@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../bloc/search/student_provider.dart';
+import '../../../provider/store_violation_provider.dart';
 
 class FoundDataList extends StatelessWidget {
   const FoundDataList({
@@ -16,7 +16,8 @@ class FoundDataList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchProv = Provider.of<SearchProvider>(context, listen: false);
+    final searchProv =
+        Provider.of<StoreViolationProvider>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -96,7 +97,7 @@ class FoundDataList extends StatelessWidget {
                             ? foundStudents[index]['name']
                             : foundViolationTypes[index]['name'],
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
                       ),

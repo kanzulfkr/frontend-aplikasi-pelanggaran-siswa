@@ -34,9 +34,7 @@ class Data {
   final int id;
   final String name;
   final String email;
-  final dynamic nisn;
   final String phone;
-  final dynamic gender;
   final String roles;
   final String address;
 
@@ -44,9 +42,7 @@ class Data {
     required this.id,
     required this.name,
     required this.email,
-    required this.nisn,
     required this.phone,
-    required this.gender,
     required this.roles,
     required this.address,
   });
@@ -59,9 +55,7 @@ class Data {
         id: json["id"],
         name: json["name"],
         email: json["email"],
-        nisn: json["nisn"],
         phone: json["phone"],
-        gender: json["gender"],
         roles: json["roles"],
         address: json["address"],
       );
@@ -70,9 +64,7 @@ class Data {
         "id": id,
         "name": name,
         "email": email,
-        "nisn": nisn,
         "phone": phone,
-        "gender": gender,
         "roles": roles,
         "address": address,
       };

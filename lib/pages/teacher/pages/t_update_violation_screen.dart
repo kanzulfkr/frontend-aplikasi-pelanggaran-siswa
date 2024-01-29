@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../common/widget/custom_app_bar.dart';
-import '../widget/update_form_violation.dart';
+import '../../../provider/store_violation_provider.dart';
+import '../widget/custom_text_form_field.dart';
+import '../widget/title_form_field.dart';
 
 class UpdateViolationScreen extends StatefulWidget {
   const UpdateViolationScreen({super.key});
@@ -10,78 +15,80 @@ class UpdateViolationScreen extends StatefulWidget {
 }
 
 class _UpdateViolationScreenState extends State<UpdateViolationScreen> {
-  final siswaController = TextEditingController();
-  final _abcd = [
-    ['a', 1],
-    ['b', 2],
-    ['c', 3],
-    ['d', 4],
-  ];
+  TextEditingController studentController = TextEditingController();
+  TextEditingController violationController = TextEditingController();
+  TextEditingController officerController = TextEditingController();
+  TextEditingController catatanController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    studentController;
+    violationController;
+    officerController;
+    catatanController;
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    final storeProv =
+        Provider.of<StoreViolationProvider>(context, listen: false);
+    Future.microtask(() => storeProv.getSearchStudent());
+    Future.microtask(() => storeProv.getSearchViolationTypes());
+    log('Search student & violation types provider');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final storeProv =
+        Provider.of<StoreViolationProvider>(context, listen: false);
     return Scaffold(
       appBar: const CustomAppBar(title: 'Edit Data Pelanggaran'),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: ListView(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 30, bottom: 10),
-              child: Text(
-                'Siswa',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: '',
-                ),
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: ListView(
+            children: [
+              const SizedBox(height: 10),
+              const TitleFormField(title: 'Siswa'),
+              CustomTextFormField(
+                controller: storeProv.studentController,
+                hintText: 'Pilih nama siswa',
+                icon: const Icon(Icons.person_2_outlined),
+                isStudentSearch: true,
+                readOnly: true,
               ),
-            ),
-            DropdownButtonFormField(
-              items: _abcd.map((e) {
-                return DropdownMenuItem(
-                  value: e,
-                  child: Text(e.toString()),
-                );
-              }).toList(),
-              onChanged: (value) {},
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 15, bottom: 10),
-              child: Text(
-                'Petugas',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: '',
-                ),
+              const TitleFormField(title: 'Jenis Pelanggaran'),
+              CustomTextFormField(
+                controller: storeProv.violationTypesController,
+                hintText: 'Pilih jenis pelanggaran',
+                icon: const Icon(Icons.file_copy_outlined),
+                isStudentSearch: false,
+                readOnly: true,
               ),
-            ),
-            UpdateFormViolation(controller: siswaController),
-            const Padding(
-              padding: EdgeInsets.only(top: 15, bottom: 10),
-              child: Text(
-                'Jenis Pelanggaran',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: '',
-                ),
+              const TitleFormField(title: 'Petugas'),
+              CustomTextFormField(
+                controller: storeProv.officerController,
+                hintText: 'Pilih nama petugas',
+                icon: const Icon(Icons.person_2_outlined),
+                isStudentSearch: false,
+                readOnly: true,
               ),
-            ),
-            UpdateFormViolation(controller: siswaController),
-            const Padding(
-              padding: EdgeInsets.only(top: 15, bottom: 10),
-              child: Text(
-                'Catatan',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: '',
-                ),
+              const TitleFormField(title: 'Catatan'),
+              CustomTextFormField(
+                controller: catatanController,
+                hintText: 'Tuliskan catatan',
+                icon: const Icon(Icons.note_alt_outlined),
+                isStudentSearch: false,
+                readOnly: false,
               ),
-            ),
-            UpdateFormViolation(controller: siswaController),
-          ],
+              const SizedBox(height: 20),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );

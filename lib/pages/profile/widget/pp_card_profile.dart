@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/bloc/getUser/get_user_bloc.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
 import 'package:frontend_aps/pages/main_screen/pages/load_profile.dart';
+import 'package:provider/provider.dart';
+import '../../../provider/store_violation_provider.dart';
 
 class CardProfile extends StatelessWidget {
   const CardProfile({
@@ -16,6 +18,14 @@ class CardProfile extends StatelessWidget {
         return state.maybeWhen(
           loading: () => const LoadingProfile(),
           loaded: (data) {
+            Provider.of<StoreViolationProvider>(context, listen: false);
+            if (data.data!.roles == ' 6' || data.data!.roles == '7') {
+            } else {
+              final storeProv =
+                  Provider.of<StoreViolationProvider>(context, listen: false);
+              storeProv.setOfficerId(data.data!.teacherId);
+              storeProv.setOfficerController(data.data!.name!);
+            }
             return Container(
               height: 150,
               width: double.maxFinite,

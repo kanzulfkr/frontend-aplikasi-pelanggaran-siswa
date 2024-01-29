@@ -12,7 +12,7 @@ class NotFoundDataList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 60),
+        const SizedBox(height: 20),
         Container(
           width: double.maxFinite,
           margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),

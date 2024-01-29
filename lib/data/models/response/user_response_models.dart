@@ -29,6 +29,7 @@ class UserProfileResponseModel {
 class Data {
   final int? id;
   final int? studentId;
+  final int? teacherId;
   final String? name;
   final String? email;
   final String? roles;
@@ -42,13 +43,14 @@ class Data {
 
   Data({
     this.id,
+    this.studentId,
+    this.teacherId,
     this.name,
     this.email,
     this.roles,
     this.nip,
     this.nisn,
     this.jobTitle,
-    this.studentId,
     this.studentName,
     this.phone,
     this.gender,
@@ -61,13 +63,14 @@ class Data {
 
   factory Data.fromMap(Map<String, dynamic> json) => Data(
         id: json["id"],
+        studentId: json["student_id"],
+        teacherId: json["teacher_id"],
         name: json["name"],
         email: json["email"],
         roles: json["roles"],
         nip: json["nip"],
         nisn: json["nisn"],
         jobTitle: json["job_title"],
-        studentId: json["student_id"],
         studentName: json["student_name"],
         phone: json["phone"],
         gender: json["gender"],
@@ -76,13 +79,14 @@ class Data {
 
   Map<String, dynamic> toMap() => {
         "id": id,
+        "student_id": studentId,
+        "teacher_id": teacherId,
         "name": name,
         "email": email,
         "roles": roles,
         "nip": nip,
         "nisn": nisn,
         "job_title": jobTitle,
-        "student_id": studentId,
         "student_name": studentName,
         "phone": phone,
         "gender": gender,

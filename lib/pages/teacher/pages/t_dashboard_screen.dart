@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
 import 'package:frontend_aps/pages/teacher/pages/t_add_violation_screen.dart';
 import 'package:provider/provider.dart';
-import '../../../bloc/search/student_provider.dart';
 import '../../../common/widget/dashboard_card_menu.dart';
+import '../../../provider/store_violation_provider.dart';
 import 't_validation_screen.dart';
 import 't_violation_screen.dart';
 
@@ -49,7 +49,7 @@ class GuruDashboardScreen extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(30),
+                    Radius.circular(20),
                   ),
                 ),
                 prefixIcon: Icon(Icons.search_sharp),
@@ -78,12 +78,12 @@ class GuruDashboardScreen extends StatelessWidget {
               secondTitle: 'Pelanggaran',
               color: ApsColor.dashboard2,
               onTap: () {
-                final searchProv =
-                    Provider.of<SearchProvider>(context, listen: false);
-                searchProv.setStudentId(null);
-                searchProv.setViolationTypesId(null);
-                searchProv.setStudentController('');
-                searchProv.setViolationTypesController('');
+                final storeProv =
+                    Provider.of<StoreViolationProvider>(context, listen: false);
+                storeProv.setStudentId(null);
+                storeProv.setViolationTypesId(null);
+                storeProv.setStudentController('');
+                storeProv.setViolationTypesController('');
                 Navigator.push(
                   context,
                   MaterialPageRoute(

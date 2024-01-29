@@ -2,7 +2,6 @@ import 'package:frontend_aps/common/constant/variable.dart';
 import 'package:frontend_aps/data/datasources/auth_local_datasources.dart';
 import 'package:frontend_aps/data/models/request/auth_request_models.dart';
 import 'package:frontend_aps/data/models/response/auth_response_models.dart';
-import 'package:frontend_aps/data/models/response/user_response_models.dart';
 import 'package:http/http.dart' as http;
 import 'package:dartz/dartz.dart';
 
@@ -36,9 +35,10 @@ class AuthRemoteDataSources {
         }
       }
       return const Left(
-          'Data yang anda masukkan tidak dapat diproses, harap hubungi administrator !');
+          'Data yang anda masukkan tidak dapat diproses, harap coba kembali dalam beberapa saat!');
     } else {
-      return const Left('Server error, please back again !');
+      return const Left(
+          'Server error, harap coba kembali dalam beberapa saat!');
     }
   }
 

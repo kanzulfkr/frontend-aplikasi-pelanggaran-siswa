@@ -9,7 +9,6 @@ class CustomTextFormField extends StatelessWidget {
     required this.icon,
     required this.isStudentSearch,
     required this.readOnly,
-    required this.onTap,
   });
 
   final TextEditingController controller;
@@ -17,26 +16,24 @@ class CustomTextFormField extends StatelessWidget {
   final Icon icon;
   final bool isStudentSearch;
   final bool readOnly;
-  final bool onTap;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       readOnly: readOnly,
-      maxLines: hintText == 'Tuliskan catatan' ? 3 : 1,
+      minLines:
+          hintText.contains('jenis') || hintText.contains('catatan') ? 1 : 1,
+      maxLines:
+          hintText.contains('jenis') || hintText.contains('catatan') ? 3 : 1,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(
-          color: Colors.black54,
           letterSpacing: 0.3,
           fontSize: 15,
         ),
-        prefixIcon: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: icon,
-        ),
+        prefixIcon: icon, // ),
         border: const OutlineInputBorder(
           borderSide: BorderSide(width: 0.5),
           borderRadius: BorderRadius.all(
@@ -44,22 +41,36 @@ class CustomTextFormField extends StatelessWidget {
           ),
         ),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          if (hintText.contains('siswa')) {
+            return 'Nama siswa tidak boleh kosong.';
+          } else if (hintText.contains('jenis')) {
+            return 'Jenis Pelanggaran tidak boleh kosong.';
+          } else if (hintText.contains('petugas')) {
+            return 'Nama Petugas tidak boleh kosong.';
+          } else if (hintText.contains('catatan')) {
+            return 'Catatan tidak boleh kosong.';
+          }
+        }
+        return null;
+      },
       onTap: () {
-        onTap
-            ? Navigator.push(
+        hintText.contains('petugas') || hintText.contains('catatan')
+            ? null
+            : Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => AddSearchScreen(
                     isStudentSearch: isStudentSearch,
                   ),
                 ),
-              )
-            : null;
+              );
       },
     );
   }
 }
- // TextFormField(
+            // TextFormField(
             //   controller: officerController,
             //   readOnly: true,
             //   autovalidateMode: AutovalidateMode.onUserInteraction,

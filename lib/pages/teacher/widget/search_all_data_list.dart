@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../bloc/search/student_provider.dart';
+import '../../../provider/store_violation_provider.dart';
 
 class AllDataList extends StatelessWidget {
   const AllDataList({
@@ -16,7 +15,8 @@ class AllDataList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchProv = Provider.of<SearchProvider>(context, listen: false);
+    final storeProv =
+        Provider.of<StoreViolationProvider>(context, listen: false);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -63,13 +63,13 @@ class AllDataList extends StatelessWidget {
                 return InkWell(
                   onTap: () {
                     if (isStudentSearch) {
-                      searchProv.setStudentId(allStudents[index]['student_id']);
-                      searchProv
+                      storeProv.setStudentId(allStudents[index]['student_id']);
+                      storeProv
                           .setStudentController(allStudents[index]['name']);
                     } else {
-                      searchProv
+                      storeProv
                           .setViolationTypesId(allViolationTypes[index]['id']);
-                      searchProv.setViolationTypesController(
+                      storeProv.setViolationTypesController(
                           allViolationTypes[index]['name']);
                     }
                     Navigator.pop(context);

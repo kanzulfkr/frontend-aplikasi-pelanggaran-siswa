@@ -8,17 +8,22 @@ import '../../../bloc/violation/violation_bloc.dart';
 import '../../../common/widget/btn_primary.dart';
 import '../../../common/widget/btn_secondary.dart';
 
-class DeleteViolationAlertDialog extends StatefulWidget {
-  const DeleteViolationAlertDialog({super.key, required this.id});
+class ValidateViolationAlertDialog extends StatefulWidget {
+  const ValidateViolationAlertDialog({
+    super.key,
+    required this.id,
+    required this.isDetail,
+  });
   final int id;
+  final bool isDetail;
 
   @override
-  State<DeleteViolationAlertDialog> createState() =>
-      _DeleteViolationAlertDialogState();
+  State<ValidateViolationAlertDialog> createState() =>
+      _ValidateViolationAlertDialogState();
 }
 
-class _DeleteViolationAlertDialogState
-    extends State<DeleteViolationAlertDialog> {
+class _ValidateViolationAlertDialogState
+    extends State<ValidateViolationAlertDialog> {
   @override
   void initState() {
     super.initState();
@@ -28,7 +33,7 @@ class _DeleteViolationAlertDialogState
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.white,
-      title: const Text('Hapus data pelanggaran'),
+      title: const Text('Validasi pelanggaran'),
       titleTextStyle: const TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w600,
@@ -40,7 +45,7 @@ class _DeleteViolationAlertDialogState
           children: [
             const SizedBox(height: 20),
             const Text(
-              'Apakah anda yakin untuk menghapus data pelanggaran tersebut?',
+              'Apakah anda yakin untuk melakukan validasi pelanggaran tersebut?',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -67,22 +72,22 @@ class _DeleteViolationAlertDialogState
                     onPress: () {
                       Provider.of<DeleteViolationProvider>(context,
                               listen: false)
-                          .deleteViolation(widget.id);
+                          .validateViolation(widget.id, '1');
                       Navigator.of(context).pop();
-                      // Navigator.of(context).pop();
+                      widget.isDetail ? Navigator.of(context).pop() : null;
                       setState(() {
                         context
                             .read<ViolationBloc>()
                             .add(const ViolationEvent.getViolation());
-                        log("Get Violation Api..");
+                        log("Refresh Data Violation Api..");
                       });
-                      log("Delete Violation Api..");
+                      log("Validate Violation Api..");
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Center(
                               child: Text(
-                                'Data telah berhasil di hapus.',
+                                'Data telah berhasil di validasi.',
                               ),
                             ),
                             backgroundColor: ApsColor.primaryColor,

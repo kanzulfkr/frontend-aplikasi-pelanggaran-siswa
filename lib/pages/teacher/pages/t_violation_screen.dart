@@ -5,9 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/bloc/violation/violation_bloc.dart';
 import 'package:frontend_aps/common/widget/custom_app_bar.dart';
 import 'package:frontend_aps/pages/student/widget/point_row_title.dart';
-
-import '../../../common/constant/aps_color.dart';
-import '../widget/custom_list_tile.dart';
+import '../widget/list_tile_violation.dart';
 import '../widget/loading/load_violation.dart';
 
 class ViolationScreen extends StatefulWidget {
@@ -32,7 +30,7 @@ class _ViolationScreenState extends State<ViolationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 248, 246, 246),
+      backgroundColor: Colors.grey.shade100,
       appBar: widget.hideTitleV
           ? null
           : const CustomAppBar(title: 'Data Pelanggaran Siswa'),
@@ -58,7 +56,7 @@ class _ViolationScreenState extends State<ViolationScreen> {
                     child: ListView.builder(
                       itemCount: data.length,
                       itemBuilder: (context, index) {
-                        return CustomListTile(
+                        return ListTileViolation(
                           violation: data[index],
                           i: (index + 1).toString(),
                         );
@@ -71,7 +69,7 @@ class _ViolationScreenState extends State<ViolationScreen> {
                 orElse: () => const Center(child: Text("No Data")),
               );
             },
-          )
+          ),
         ],
       ),
     );
