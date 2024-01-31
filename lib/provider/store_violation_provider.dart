@@ -12,13 +12,16 @@ class StoreViolationProvider extends ChangeNotifier {
 
   int? _studentId;
   int? get getStudentId => _studentId;
-  int? _officerId;
-  int? get getOfficerId => _officerId;
+  int? _officerIdStore;
+  int? get getOfficerIdStore => _officerIdStore;
+  int? _officerIdUpdate;
+  int? get getOfficerIdUpdate => _officerIdUpdate;
   int? _violationTypesId;
   int? get getViolationTypesId => _violationTypesId;
 
   TextEditingController studentController = TextEditingController();
-  TextEditingController officerController = TextEditingController();
+  TextEditingController officerControllerStore = TextEditingController();
+  TextEditingController officerControllerUpdate = TextEditingController();
   TextEditingController violationTypesController = TextEditingController();
 
   Future<void> setStudentId(int? id) async {
@@ -26,8 +29,13 @@ class StoreViolationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> setOfficerId(int? id) async {
-    _officerId = id;
+  Future<void> setOfficerIdStore(int? id) async {
+    _officerIdStore = id;
+    notifyListeners();
+  }
+
+  Future<void> setOfficerIdUpdate(int? id) async {
+    _officerIdUpdate = id;
     notifyListeners();
   }
 
@@ -41,8 +49,13 @@ class StoreViolationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setOfficerController(String value) {
-    officerController.text = value;
+  void setOfficerControllerStore(String value) {
+    officerControllerStore.text = value;
+    notifyListeners();
+  }
+
+  void setOfficerControllerUpdate(String value) {
+    officerControllerUpdate.text = value;
     notifyListeners();
   }
 

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
+import 'package:frontend_aps/common/widget/custom_alert_dialog.dart';
 import 'package:frontend_aps/pages/teacher/g_main_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../bloc/storeViolation/store_violation_bloc.dart';
@@ -11,8 +12,8 @@ import '../../../data/models/request/violation_request_models.dart';
 import '../../../provider/store_violation_provider.dart';
 import '../../auth/widget/pop_up_message.dart';
 
-class StoreButton extends StatelessWidget {
-  const StoreButton({
+class ButtonStore extends StatelessWidget {
+  const ButtonStore({
     Key? key,
     required this.formKey,
     required this.studentController,
@@ -34,20 +35,30 @@ class StoreButton extends StatelessWidget {
             return PrimaryButton(
               name: 'Tambah Data',
               onPress: () {
-                final storeProv =
-                    Provider.of<StoreViolationProvider>(context, listen: false);
-                if (formKey.currentState!.validate()) {
-                  final storeModel = ViolationRequestModel(
-                    studentId: storeProv.getStudentId!,
-                    violationsTypesId: storeProv.getViolationTypesId,
-                    officerId: storeProv.getOfficerId!,
-                    catatan: catatanController.text,
-                    isValidate: 0,
-                  );
-                  context
-                      .read<StoreViolationBloc>()
-                      .add(StoreViolationEvent.storeViolation(storeModel));
-                }
+                customAlertDialog(
+                  context,
+                  'Tambah Data',
+                  'Apakah anda yakin untuk menambahkan data tersebut?',
+                  'Data telah berhasil ditambahkan',
+                  false,
+                  () {
+                    final storeProv = Provider.of<StoreViolationProvider>(
+                        context,
+                        listen: false);
+                    if (formKey.currentState!.validate()) {
+                      final storeModel = ViolationRequestModel(
+                        studentId: storeProv.getStudentId!,
+                        violationsTypesId: storeProv.getViolationTypesId,
+                        officerId: storeProv.getOfficerIdStore!,
+                        catatan: catatanController.text,
+                        isValidate: 0,
+                      );
+                      context
+                          .read<StoreViolationBloc>()
+                          .add(StoreViolationEvent.storeViolation(storeModel));
+                    }
+                  },
+                );
               },
             );
           },
@@ -70,15 +81,15 @@ class StoreButton extends StatelessWidget {
                   closeIconColor: Colors.white,
                 ),
               );
-            }
-            if (context.mounted) {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const GuruMainScreen(),
-                ),
-                (Route<dynamic> route) => false,
-              );
+              if (context.mounted) {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GuruMainScreen(),
+                  ),
+                  (Route<dynamic> route) => false,
+                );
+              }
             }
           },
           error: (error) async {

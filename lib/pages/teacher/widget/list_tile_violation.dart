@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_aps/common/widget/custom_alert_dialog.dart';
 import 'package:frontend_aps/data/models/response/violation_response_models.dart';
 import 'package:frontend_aps/pages/teacher/pages/t_detail_violation_screen.dart';
 import 'package:frontend_aps/pages/teacher/pages/t_update_violation_screen.dart';
-import 'package:frontend_aps/pages/teacher/widget/delete_alert_dialog.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
+import '../../../bloc/violation/violation_bloc.dart';
+import '../../../provider/delete_violations_provider.dart';
 import '../../../provider/store_violation_provider.dart';
 
-class ListTileViolation extends StatelessWidget {
+class ListTileViolation extends StatefulWidget {
   const ListTileViolation({
     super.key,
     required this.violation,
@@ -16,8 +17,23 @@ class ListTileViolation extends StatelessWidget {
   });
   final String i;
   final Violation violation;
+
+  @override
+  State<ListTileViolation> createState() => _ListTileViolationState();
+}
+
+class _ListTileViolationState extends State<ListTileViolation> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final storeProv =
+        Provider.of<StoreViolationProvider>(context, listen: false);
+    final deleteProv =
+        Provider.of<DeleteViolationProvider>(context, listen: false);
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
       width: double.maxFinite,
@@ -31,7 +47,7 @@ class ListTileViolation extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => DetailGuruViolationScreen(
-                    violation: violation,
+                    violation: widget.violation,
                   ),
                 ),
               );
@@ -39,19 +55,19 @@ class ListTileViolation extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                i,
+                widget.i,
                 style:
                     const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
             ),
             title: Text(
-              violation.studentName!,
+              widget.violation.studentName!,
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               overflow: TextOverflow.fade,
               maxLines: 2,
             ),
             subtitle: Text(
-              DateFormat("dd MMM yyyy").format(violation.createdAt!),
+              DateFormat("dd MMM yyyy").format(widget.violation.createdAt!),
               style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
             ),
             trailing: Column(
@@ -61,7 +77,7 @@ class ListTileViolation extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                   decoration: ShapeDecoration(
-                    color: violation.isValidate == 1
+                    color: widget.violation.isValidate == 1
                         ? const Color(0xFFEBF6EB)
                         : const Color(0xFFF7E1E1),
                     shape: RoundedRectangleBorder(
@@ -69,10 +85,12 @@ class ListTileViolation extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    violation.isValidate == 1 ? 'Validate' : 'Unvalidate',
+                    widget.violation.isValidate == 1
+                        ? 'Validate'
+                        : 'Unvalidate',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: violation.isValidate == 1
+                      color: widget.violation.isValidate == 1
                           ? const Color(0xFF31AA26)
                           : const Color.fromARGB(255, 205, 28, 28),
                       fontSize: 13,
@@ -80,40 +98,57 @@ class ListTileViolation extends StatelessWidget {
                     ),
                   ),
                 ),
-                violation.isValidate == 1
+                widget.violation.isValidate == 1
                     ? const SizedBox()
                     : SizedBox(
                         width: 80,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
+                            // update
                             GestureDetector(
                               onTap: () {
-                                final storeProv =
-                                    Provider.of<StoreViolationProvider>(context,
-                                        listen: false);
-                                storeProv.setStudentId(null);
-                                storeProv.setViolationTypesId(null);
-                                storeProv.setStudentController('');
-                                storeProv.setViolationTypesController('');
+                                storeProv
+                                    .setStudentId(widget.violation.studentId);
+                                storeProv.setOfficerIdUpdate(
+                                    widget.violation.officerId);
+                                storeProv.setViolationTypesId(
+                                    widget.violation.violationsTypesId);
+                                storeProv.setStudentController(
+                                    widget.violation.studentName!);
+                                storeProv.setOfficerControllerUpdate(
+                                    widget.violation.officerName!);
+                                storeProv.setViolationTypesController(
+                                    widget.violation.violationName!);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const UpdateViolationScreen(),
+                                    builder: (context) => UpdateViolationScreen(
+                                      id: widget.violation.id!,
+                                      catatan: widget.violation.catatan!,
+                                    ),
                                   ),
                                 );
                               },
                               child: const Icon(Icons.edit_outlined),
                             ),
+                            // delete
                             GestureDetector(
                               onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return DeleteViolationAlertDialog(
-                                      id: violation.id!,
-                                    );
+                                customAlertDialog(
+                                  context,
+                                  'Hapus data pelanggaran',
+                                  'Apakah anda yakin untuk menghapus data pelanggaran tersebut?',
+                                  'Data telah Berhasil di hapus.',
+                                  true,
+                                  () {
+                                    deleteProv
+                                        .deleteViolation(widget.violation.id!);
+                                    Navigator.of(context).pop();
+                                    setState(() {
+                                      context.read<ViolationBloc>().add(
+                                          const ViolationEvent.getViolation());
+                                    });
                                   },
                                 );
                               },
@@ -132,7 +167,7 @@ class ListTileViolation extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 10, right: 20, left: 20),
             child: Text(
-              violation.violationName!,
+              widget.violation.violationName!,
               style: const TextStyle(fontSize: 15),
               overflow: TextOverflow.fade,
               maxLines: 2,

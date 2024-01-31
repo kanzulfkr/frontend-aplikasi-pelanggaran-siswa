@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_aps/pages/teacher/widget/loading/load_search_data.dart';
 import 'package:provider/provider.dart';
 
 import '../../../provider/store_violation_provider.dart';
 import '../widget/search_all_data_list.dart';
 import '../../../common/constant/aps_color.dart';
 import '../widget/search_found_data_list.dart';
-import '../widget/search_not_found_student_list.dart';
+import '../widget/not_found_data_search.dart';
 
 class AddSearchScreen extends StatefulWidget {
   const AddSearchScreen({
@@ -156,11 +157,13 @@ class _AddSearchScreenState extends State<AddSearchScreen> {
                       foundViolationTypes: foundViolationTypes,
                     )
                   : NotFoundDataList(value: _searchController.text)
-              : AllDataList(
-                  allStudents: allStudents,
-                  allViolationTypes: allViolationTypes,
-                  isStudentSearch: widget.isStudentSearch,
-                ),
+              : allStudents.isEmpty || allViolationTypes.isEmpty
+                  ? const LoadingSearchData()
+                  : AllDataList(
+                      allStudents: allStudents,
+                      allViolationTypes: allViolationTypes,
+                      isStudentSearch: widget.isStudentSearch,
+                    ),
         ],
       ),
     );

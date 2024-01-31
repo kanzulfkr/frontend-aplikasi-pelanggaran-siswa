@@ -27,6 +27,14 @@ class CardMenu extends StatelessWidget {
           Radius.circular(30),
         ),
         color: color,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.grey,
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: Offset(2, 2),
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,18 +64,19 @@ class CardMenu extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 10),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(30),
                     ),
-                    color: Color.fromARGB(255, 244, 244, 244),
+                    color: Colors.grey.shade100,
                   ),
                   child: const Text(
                     'Lihat',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 15,
+                      letterSpacing: 0.5,
                       color: ApsColor.primaryColor,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                 ),

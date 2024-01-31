@@ -1,12 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:frontend_aps/pages/teacher/widget/store_button.dart';
+import 'package:frontend_aps/pages/teacher/widget/button_store.dart';
 import 'package:provider/provider.dart';
 import '../../../common/widget/custom_app_bar.dart';
 import '../../../provider/store_violation_provider.dart';
-import '../widget/custom_text_form_field.dart';
-import '../widget/title_form_field.dart';
+import '../widget/custom_text_field_store.dart';
+import '../widget/text_title_form_field.dart';
 
 class AddViolationScreen extends StatefulWidget {
   const AddViolationScreen({super.key});
@@ -47,6 +47,7 @@ class _AddViolationScreenState extends State<AddViolationScreen> {
         Provider.of<StoreViolationProvider>(context, listen: false);
     return Scaffold(
       appBar: const CustomAppBar(title: 'Tambah Data Pelanggaran'),
+      backgroundColor: Colors.grey.shade100,
       body: Form(
         key: _formKey,
         child: Padding(
@@ -55,7 +56,7 @@ class _AddViolationScreenState extends State<AddViolationScreen> {
             children: [
               const SizedBox(height: 10),
               const TitleFormField(title: 'Siswa'),
-              CustomTextFormField(
+              CustomTextFieldStore(
                 controller: storeProv.studentController,
                 hintText: 'Pilih nama siswa',
                 icon: const Icon(Icons.person_2_outlined),
@@ -63,7 +64,7 @@ class _AddViolationScreenState extends State<AddViolationScreen> {
                 readOnly: true,
               ),
               const TitleFormField(title: 'Jenis Pelanggaran'),
-              CustomTextFormField(
+              CustomTextFieldStore(
                 controller: storeProv.violationTypesController,
                 hintText: 'Pilih jenis pelanggaran',
                 icon: const Icon(Icons.file_copy_outlined),
@@ -71,15 +72,15 @@ class _AddViolationScreenState extends State<AddViolationScreen> {
                 readOnly: true,
               ),
               const TitleFormField(title: 'Petugas'),
-              CustomTextFormField(
-                controller: storeProv.officerController,
+              CustomTextFieldStore(
+                controller: storeProv.officerControllerStore,
                 hintText: 'Pilih nama petugas',
                 icon: const Icon(Icons.person_2_outlined),
                 isStudentSearch: false,
                 readOnly: true,
               ),
               const TitleFormField(title: 'Catatan'),
-              CustomTextFormField(
+              CustomTextFieldStore(
                 controller: catatanController,
                 hintText: 'Tuliskan catatan',
                 icon: const Icon(Icons.note_alt_outlined),
@@ -87,7 +88,7 @@ class _AddViolationScreenState extends State<AddViolationScreen> {
                 readOnly: false,
               ),
               const SizedBox(height: 20),
-              StoreButton(
+              ButtonStore(
                 formKey: _formKey,
                 studentController: storeProv.studentController,
                 officerController: officerController,

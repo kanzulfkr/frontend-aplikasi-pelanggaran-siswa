@@ -21,6 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: ListView(
@@ -37,11 +38,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: ApsColor.white,
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(0, 3),
+                    color: Colors.grey,
+                    spreadRadius: 1,
                     blurRadius: 2,
-                    color: ApsColor.grey,
-                    blurStyle: BlurStyle.normal,
-                  )
+                    offset: Offset(2, 2),
+                  ),
                 ],
               ),
               child: const Column(
@@ -76,11 +77,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: ApsColor.white,
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(0, 3),
+                    color: Colors.grey,
+                    spreadRadius: 1,
                     blurRadius: 2,
-                    color: ApsColor.grey,
-                    blurStyle: BlurStyle.normal,
-                  )
+                    offset: Offset(2, 2),
+                  ),
                 ],
               ),
               child: const Column(

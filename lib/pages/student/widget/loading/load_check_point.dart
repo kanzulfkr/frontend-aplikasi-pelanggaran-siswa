@@ -29,7 +29,7 @@ class LoadingCheckPoint extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CircleSkeleton(size: 60),
+                  const CircleSkelton(size: 60),
                   Container(
                     padding: const EdgeInsets.only(left: 20),
                     margin: const EdgeInsets.only(left: 5),

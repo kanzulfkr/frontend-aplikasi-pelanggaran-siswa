@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/common/widget/custom_app_bar.dart';
 import 'package:frontend_aps/pages/teacher/widget/list_tile_validation.dart';
+import 'package:frontend_aps/pages/teacher/widget/not_found_data.dart';
 import '../../../bloc/violation/violation_bloc.dart';
 import '../widget/loading/load_violation.dart';
 
@@ -28,38 +29,46 @@ class _ValidationScreenState extends State<ValidationScreen> {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Validasi Pelanggaran'),
       backgroundColor: Colors.grey.shade100,
-      body: ListView(
-        children: [
-          const SizedBox(height: 20),
-          BlocBuilder<ViolationBloc, ViolationState>(
-            builder: (context, state) {
-              return state.maybeWhen(
-                loading: () => const LoadingViolation(hideTitlev: false),
-                loaded: (data) {
-                  return SizedBox(
-                    height: 600,
-                    child: ListView.builder(
-                      itemCount: data.length,
-                      itemBuilder: (context, index) {
-                        if (data[index].isValidate == 0) {
-                          int currentCounter = counter++;
-                          return ListTileValidation(
-                            violation: data[index],
-                            i: currentCounter,
-                          );
-                        } else {
-                          return const SizedBox();
-                        }
-                      },
-                    ),
-                  );
-                },
-                error: (message) => const LoadingViolation(hideTitlev: false),
-                orElse: () => const Center(child: Text("No Data")),
-              );
+      body: BlocBuilder<ViolationBloc, ViolationState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            loading: () => const LoadingTeacherViolation(hideTitlev: false),
+            loaded: (data) {
+              bool hasUnvalidatedData =
+                  data.any((item) => item.isValidate == 0);
+              return hasUnvalidatedData
+                  ? ListView(
+                      children: [
+                        const SizedBox(height: 20),
+                        SizedBox(
+                          height: 600,
+                          child: ListView.builder(
+                            itemCount: data.length,
+                            itemBuilder: (context, index) {
+                              if (data[index].isValidate == 0) {
+                                int currentCounter = counter++;
+                                return ListTileValidation(
+                                  violation: data[index],
+                                  i: currentCounter,
+                                );
+                              } else {
+                                return const SizedBox();
+                              }
+                            },
+                          ),
+                        )
+                      ],
+                    )
+                  : const NotFoundData(
+                      title: 'Tidak ada data yang ditemukan,',
+                      subTitle: 'semua data telah divalidasi',
+                    );
             },
-          ),
-        ],
+            error: (message) =>
+                const LoadingTeacherViolation(hideTitlev: false),
+            orElse: () => const Center(child: Text("No Data")),
+          );
+        },
       ),
     );
   }

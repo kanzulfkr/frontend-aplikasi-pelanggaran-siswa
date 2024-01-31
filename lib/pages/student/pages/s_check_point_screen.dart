@@ -36,6 +36,7 @@ class _CheckPointScreenState extends State<CheckPointScreen> {
       appBar: widget.hideTitle
           ? null
           : const CustomAppBar(title: 'Akumulasi Poin Siswa'),
+      backgroundColor: Colors.grey.shade50,
       body: BlocBuilder<PointBloc, PointState>(
         builder: (context, state) {
           return state.maybeWhen(

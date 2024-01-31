@@ -23,8 +23,8 @@ class Skelton extends StatelessWidget {
   }
 }
 
-class CircleSkeleton extends StatelessWidget {
-  const CircleSkeleton({Key? key, this.size = 24}) : super(key: key);
+class CircleSkelton extends StatelessWidget {
+  const CircleSkelton({Key? key, this.size = 24}) : super(key: key);
 
   final double? size;
 

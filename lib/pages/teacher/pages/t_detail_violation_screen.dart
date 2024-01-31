@@ -4,11 +4,14 @@ import 'package:frontend_aps/common/widget/btn_secondary.dart';
 import 'package:frontend_aps/pages/student/widget/detail_card_student.dart';
 import 'package:frontend_aps/pages/student/widget/detail_row_status.dart';
 import 'package:frontend_aps/pages/student/widget/detail_row_subtitle.dart';
-import 'package:frontend_aps/pages/teacher/widget/validate_alert_dialog.dart';
+import 'package:provider/provider.dart';
+import '../../../bloc/violation/violation_bloc.dart';
+import '../../../common/widget/custom_alert_dialog.dart';
 import '../../../common/widget/custom_app_bar.dart';
 import '../../../data/models/response/violation_response_models.dart';
+import '../../../provider/delete_violations_provider.dart';
 
-class DetailGuruViolationScreen extends StatelessWidget {
+class DetailGuruViolationScreen extends StatefulWidget {
   const DetailGuruViolationScreen({
     super.key,
     required this.violation,
@@ -16,52 +19,75 @@ class DetailGuruViolationScreen extends StatelessWidget {
   final Violation violation;
 
   @override
+  State<DetailGuruViolationScreen> createState() =>
+      _DetailGuruViolationScreenState();
+}
+
+class _DetailGuruViolationScreenState extends State<DetailGuruViolationScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Detail Pelanggaran'),
+      backgroundColor: Colors.grey.shade100,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: ListView(
           children: [
             CardStudentPoin(
-              studentName: violation.studentName!,
+              studentName: widget.violation.studentName!,
               className: 'X MIPA 1',
             ),
             const Divider(thickness: 1.5),
             RowSubTitle(
               leftTitle: 'Point :',
-              rightTitle: violation.point!.toString(),
+              rightTitle: widget.violation.point!.toString(),
             ),
             RowSubTitle(
               leftTitle: 'Tipe Pelanggaran :',
-              rightTitle: violation.type!,
+              rightTitle: widget.violation.type!,
             ),
             ColumnSubtitle(
               topTitle: 'Jenis Pelanggaran : ',
-              bottomTitle: violation.violationName!,
+              bottomTitle: widget.violation.violationName!,
             ),
             ColumnSubtitle(
               topTitle: 'Petugas Pelanggaran : ',
-              bottomTitle: violation.officerName!,
+              bottomTitle: widget.violation.officerName!,
             ),
             ColumnSubtitle(
               topTitle: 'Catatan : ',
-              bottomTitle: violation.catatan == null || violation.catatan == ''
+              bottomTitle: widget.violation.catatan == null ||
+                      widget.violation.catatan == ''
                   ? '-'
-                  : violation.catatan!,
+                  : widget.violation.catatan!,
             ),
             const SizedBox(height: 100),
-            violation.isValidate == 0
+            widget.violation.isValidate == 0
                 ? PrimaryButton(
                     name: 'Validasi sekarang!',
                     onPress: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return ValidateViolationAlertDialog(
-                            id: violation.id!,
-                            isDetail: true,
-                          );
+                      customAlertDialog(
+                        context,
+                        'Validasi pelanggaran',
+                        'Apakah anda yakin untuk melakukan validasi data pelanggaran tersebut?',
+                        'Data telah Berhasil divalidasi.',
+                        true,
+                        () {
+                          Provider.of<DeleteViolationProvider>(context,
+                                  listen: false)
+                              .validateViolation(widget.violation.id!, '1');
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                          setState(() {
+                            context
+                                .read<ViolationBloc>()
+                                .add(const ViolationEvent.getViolation());
+                          });
                         },
                       );
                     },

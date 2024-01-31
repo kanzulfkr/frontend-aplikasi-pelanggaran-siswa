@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_aps/common/widget/custom_alert_dialog.dart';
 import 'package:frontend_aps/data/models/response/violation_response_models.dart';
 import 'package:frontend_aps/pages/teacher/pages/t_detail_violation_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import '../../../bloc/violation/violation_bloc.dart';
+import '../../../provider/delete_violations_provider.dart';
 
-import 'validate_alert_dialog.dart';
-
-class ListTileValidation extends StatelessWidget {
+class ListTileValidation extends StatefulWidget {
   const ListTileValidation({
     super.key,
     required this.violation,
@@ -13,6 +15,17 @@ class ListTileValidation extends StatelessWidget {
   });
   final int i;
   final Violation violation;
+
+  @override
+  State<ListTileValidation> createState() => _ListTileValidationState();
+}
+
+class _ListTileValidationState extends State<ListTileValidation> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +41,7 @@ class ListTileValidation extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => DetailGuruViolationScreen(
-                    violation: violation,
+                    violation: widget.violation,
                   ),
                 ),
               );
@@ -36,30 +49,36 @@ class ListTileValidation extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                i.toString(),
+                widget.i.toString(),
                 style:
                     const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
             ),
             title: Text(
-              violation.studentName!,
+              widget.violation.studentName!,
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               overflow: TextOverflow.fade,
               maxLines: 2,
             ),
             subtitle: Text(
-              DateFormat("dd MMM yyyy").format(violation.createdAt!),
+              DateFormat("dd MMM yyyy").format(widget.violation.createdAt!),
               style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
             ),
             trailing: InkWell(
               onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return ValidateViolationAlertDialog(
-                      id: violation.id!,
-                      isDetail: false,
-                    );
+                customAlertDialog(
+                  context,
+                  'Validasi pelanggaran',
+                  'Apakah anda yakin untuk melakukan validasi data pelanggaran tersebut?',
+                  'Data telah Berhasil divalidasi.',
+                  true,
+                  () {
+                    Provider.of<DeleteViolationProvider>(context, listen: false)
+                        .validateViolation(widget.violation.id!, '1');
+                    Navigator.of(context).pop();
+                    context
+                        .read<ViolationBloc>()
+                        .add(const ViolationEvent.getViolation());
                   },
                 );
               },
@@ -91,7 +110,7 @@ class ListTileValidation extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 10, right: 20, left: 20),
             child: Text(
-              violation.violationName!,
+              widget.violation.violationName!,
               style: const TextStyle(fontSize: 15),
               overflow: TextOverflow.fade,
               maxLines: 2,

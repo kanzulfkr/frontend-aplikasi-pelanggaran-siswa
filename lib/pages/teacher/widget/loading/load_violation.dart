@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/widget/skelton.dart';
 
-class LoadingViolation extends StatelessWidget {
-  const LoadingViolation({super.key, required this.hideTitlev});
+class LoadingTeacherViolation extends StatelessWidget {
+  const LoadingTeacherViolation({super.key, required this.hideTitlev});
   final bool hideTitlev;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class LoadingViolation extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ListTile(
-                  leading: CircleSkeleton(size: 50),
+                  leading: CircleSkelton(size: 50),
                   title: Padding(
                     padding: EdgeInsets.only(bottom: 10),
                     child: Skelton(height: 20, width: 150),

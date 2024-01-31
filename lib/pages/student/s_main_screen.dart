@@ -41,7 +41,7 @@ class _SiswaMainScreenState extends State<SiswaMainScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: NavigationBar(
-          backgroundColor: ApsColor.white,
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           labelBehavior: labelBehavior,
           selectedIndex: currentPageIndex,
           onDestinationSelected: (int index) {
@@ -57,7 +57,7 @@ class _SiswaMainScreenState extends State<SiswaMainScreen> {
               ),
               icon: Icon(
                 Icons.home_filled,
-                color: ApsColor.grey,
+                color: Color.fromARGB(255, 131, 143, 159),
               ),
               label: 'Dashboard',
             ),
@@ -68,7 +68,7 @@ class _SiswaMainScreenState extends State<SiswaMainScreen> {
               ),
               icon: Icon(
                 Icons.insert_chart_outlined,
-                color: ApsColor.grey,
+                color: Color.fromARGB(255, 131, 143, 159),
               ),
               label: 'College',
             ),
@@ -79,7 +79,7 @@ class _SiswaMainScreenState extends State<SiswaMainScreen> {
               ),
               icon: Icon(
                 Icons.person,
-                color: ApsColor.grey,
+                color: Color.fromARGB(255, 131, 143, 159),
               ),
               label: 'Profile',
             ),

@@ -7,6 +7,7 @@ import 'package:frontend_aps/common/widget/custom_app_bar.dart';
 import 'package:frontend_aps/pages/student/widget/point_row_title.dart';
 import '../widget/list_tile_violation.dart';
 import '../widget/loading/load_violation.dart';
+import '../widget/not_found_data.dart';
 
 class ViolationScreen extends StatefulWidget {
   const ViolationScreen({
@@ -30,7 +31,7 @@ class _ViolationScreenState extends State<ViolationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Colors.grey.shade50,
       appBar: widget.hideTitleV
           ? null
           : const CustomAppBar(title: 'Data Pelanggaran Siswa'),
@@ -49,23 +50,29 @@ class _ViolationScreenState extends State<ViolationScreen> {
           BlocBuilder<ViolationBloc, ViolationState>(
             builder: (context, state) {
               return state.maybeWhen(
-                loading: () => LoadingViolation(hideTitlev: widget.hideTitleV),
+                loading: () =>
+                    LoadingTeacherViolation(hideTitlev: widget.hideTitleV),
                 loaded: (data) {
                   return SizedBox(
                     height: 600,
                     child: ListView.builder(
                       itemCount: data.length,
                       itemBuilder: (context, index) {
-                        return ListTileViolation(
-                          violation: data[index],
-                          i: (index + 1).toString(),
-                        );
+                        return data.isEmpty
+                            ? const NotFoundData(
+                                title: 'Tidak ada data yang ditemukan,',
+                                subTitle: 's',
+                              )
+                            : ListTileViolation(
+                                violation: data[index],
+                                i: (index + 1).toString(),
+                              );
                       },
                     ),
                   );
                 },
                 error: (message) =>
-                    LoadingViolation(hideTitlev: widget.hideTitleV),
+                    LoadingTeacherViolation(hideTitlev: widget.hideTitleV),
                 orElse: () => const Center(child: Text("No Data")),
               );
             },

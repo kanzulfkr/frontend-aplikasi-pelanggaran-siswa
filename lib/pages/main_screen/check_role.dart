@@ -9,7 +9,7 @@ import '../../../../bloc/getUser/get_user_bloc.dart';
 import '../../../../common/constant/aps_color.dart';
 import '../../common/constant/list_bottom_navigation.dart';
 import '../profile/profile_screen.dart';
-import 'default_main_screen.dart';
+import 'load_main_screen.dart';
 
 class CheckRole extends StatefulWidget {
   const CheckRole({super.key});
@@ -46,9 +46,7 @@ class _CheckRoleState extends State<CheckRole> {
     return BlocBuilder<GetUserBloc, GetUserState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loading: () {
-            return const DefaultMainScreen();
-          },
+          loading: () => const LoadingMainScreen(),
           loaded: (data) {
             return SafeArea(
               child: Scaffold(
@@ -73,10 +71,9 @@ class _CheckRoleState extends State<CheckRole> {
               ),
             );
           },
-          // error: (message) => Center(child: Text(message)),
-          error: (message) => const DefaultMainScreen(),
+          error: (message) => const LoadingMainScreen(),
           orElse: () {
-            return const DefaultMainScreen();
+            return const LoadingMainScreen();
           },
         );
       },

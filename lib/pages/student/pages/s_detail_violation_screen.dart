@@ -31,6 +31,7 @@ class _DetailSiswaViolationScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Detail Pelanggaran Siswa'),
+      backgroundColor: Colors.grey.shade100,
       body: BlocBuilder<PointBloc, PointState>(
         builder: (context, state) {
           return state.maybeWhen(

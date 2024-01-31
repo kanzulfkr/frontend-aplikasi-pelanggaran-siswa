@@ -3,14 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend_aps/bloc/getUser/get_user_bloc.dart';
 import 'package:frontend_aps/common/constant/aps_color.dart';
 import 'package:frontend_aps/pages/main_screen/pages/load_profile.dart';
-import 'package:provider/provider.dart';
-import '../../../provider/store_violation_provider.dart';
 
-class CardProfile extends StatelessWidget {
+class CardProfile extends StatefulWidget {
   const CardProfile({
     super.key,
   });
 
+  @override
+  State<CardProfile> createState() => _CardProfileState();
+}
+
+class _CardProfileState extends State<CardProfile> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetUserBloc, GetUserState>(
@@ -18,32 +21,25 @@ class CardProfile extends StatelessWidget {
         return state.maybeWhen(
           loading: () => const LoadingProfile(),
           loaded: (data) {
-            Provider.of<StoreViolationProvider>(context, listen: false);
-            if (data.data!.roles == ' 6' || data.data!.roles == '7') {
-            } else {
-              final storeProv =
-                  Provider.of<StoreViolationProvider>(context, listen: false);
-              storeProv.setOfficerId(data.data!.teacherId);
-              storeProv.setOfficerController(data.data!.name!);
-            }
             return Container(
               height: 150,
               width: double.maxFinite,
               margin: const EdgeInsets.only(top: 40),
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
-                  color: ApsColor.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+                color: ApsColor.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                    offset: Offset(2, 2),
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 3),
-                      blurRadius: 2,
-                      blurStyle: BlurStyle.normal,
-                      color: ApsColor.grey,
-                    ),
-                  ]),
+                ],
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_aps/pages/teacher/pages/t_search_screen.dart';
 
-class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
+class CustomTextFieldStore extends StatelessWidget {
+  const CustomTextFieldStore({
     super.key,
     required this.controller,
     required this.hintText,
