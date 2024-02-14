@@ -9,10 +9,12 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Notifikasi'),
-      body: ListView(
-        children: const [
-          Text('tes'),
-        ],
+      body: Center(
+        child: Container(
+          height: 300,
+          width: 300,
+          color: Colors.amber,
+        ),
       ),
     );
   }

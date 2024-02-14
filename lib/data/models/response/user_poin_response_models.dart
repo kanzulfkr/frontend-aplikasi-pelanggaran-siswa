@@ -29,6 +29,7 @@ class UserPointResponseModel {
 class Point {
   final int userId;
   final String name;
+  final String nisn;
   final int violationTotal;
   final int pointTotal;
   final String status;
@@ -37,6 +38,7 @@ class Point {
   Point({
     required this.userId,
     required this.name,
+    required this.nisn,
     required this.violationTotal,
     required this.pointTotal,
     required this.status,
@@ -50,6 +52,7 @@ class Point {
   factory Point.fromMap(Map<String, dynamic> json) => Point(
         userId: json["user_id"],
         name: json["name"],
+        nisn: json["nisn"],
         violationTotal: json["violation_total"],
         pointTotal: json["point_total"],
         status: json["status"],
@@ -60,6 +63,7 @@ class Point {
   Map<String, dynamic> toMap() => {
         "user_id": userId,
         "name": name,
+        "nisn": nisn,
         "violation_total": violationTotal,
         "point_total": pointTotal,
         "status": status,

@@ -26,7 +26,7 @@ class _CheckRoleState extends State<CheckRole> {
   ];
   final _guruScreens = [
     const GuruDashboardScreen(),
-    const ViolationScreen(hideTitleV: true),
+    const GuruViolationScreen(hideTitleV: true),
     const ProfileScreen(),
   ];
 

@@ -3,7 +3,7 @@ import 'package:frontend_aps/common/widget/btn_secondary.dart';
 import 'package:frontend_aps/data/models/response/user_poin_response_models.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../pages/s_detail_violation_screen.dart';
+import '../pages/s_violation_screen.dart';
 
 class ProgressPointIndicator extends StatelessWidget {
   const ProgressPointIndicator({
@@ -22,7 +22,7 @@ class ProgressPointIndicator extends StatelessWidget {
       radius: 120,
       lineWidth: 40,
       percent: item.pointTotal >= 40 ? 0.94 : item.pointTotal.toDouble() / 40,
-      progressColor: item.pointTotal == 40 ? Colors.red : Colors.indigo,
+      progressColor: item.pointTotal > 30 ? Colors.red : Colors.indigo,
       backgroundColor: Colors.indigo.shade100,
       circularStrokeCap: CircularStrokeCap.round,
       animateFromLastPercent: true,
@@ -41,7 +41,7 @@ class ProgressPointIndicator extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const DetailSiswaViolationScreen()),
+                    builder: (context) => const SiswaViolationScreen()),
               );
             }),
       ),

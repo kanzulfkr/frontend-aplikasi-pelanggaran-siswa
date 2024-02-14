@@ -58,7 +58,7 @@ class CardMenu extends StatelessWidget {
                   color: ApsColor.white,
                 ),
               ),
-              InkWell(
+              GestureDetector(
                 onTap: () => onTap(),
                 child: Container(
                   margin: const EdgeInsets.only(top: 10),

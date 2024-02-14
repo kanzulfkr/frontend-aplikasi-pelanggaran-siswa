@@ -53,7 +53,9 @@ class _CheckPointScreenState extends State<CheckPointScreen> {
                           )
                         : const SizedBox(height: 20),
                     CardStudentPoin(
-                        className: 'XI MIPA 2', studentName: item.name),
+                      studentName: item.name,
+                      className: item.nisn,
+                    ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 5),
                       child: Divider(thickness: 1.5),

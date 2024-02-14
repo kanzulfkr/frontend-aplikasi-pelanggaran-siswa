@@ -4,7 +4,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../../common/constant/aps_color.dart';
 import '../../../../common/widget/btn_secondary.dart';
-import '../../pages/s_detail_violation_screen.dart';
+import '../../pages/s_violation_screen.dart';
 import '../point_row_title.dart';
 
 class LoadingCheckPoint extends StatelessWidget {
@@ -113,8 +113,7 @@ class LoadingCheckPoint extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                const DetailSiswaViolationScreen()),
+                            builder: (context) => const SiswaViolationScreen()),
                       );
                     }),
               ),

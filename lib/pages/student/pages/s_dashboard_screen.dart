@@ -5,7 +5,7 @@ import '../../../common/widget/dashboard_card_menu.dart';
 import '../../main_screen/check_role.dart';
 import '../../notification/notification_screen.dart';
 import 's_check_point_screen.dart';
-import 's_detail_violation_screen.dart';
+import 's_violation_screen.dart';
 
 class SiswaDashboardScreen extends StatefulWidget {
   const SiswaDashboardScreen({super.key});
@@ -107,15 +107,14 @@ class _SiswaDashboardScreenState extends State<SiswaDashboardScreen> {
               const SizedBox(height: 30),
               CardMenu(
                 image: 'matkul',
-                firstTitle: 'Lihat Detail',
-                secondTitle: 'Pelanggaran',
+                firstTitle: 'Lihat Data',
+                secondTitle: 'Pelanggaran Siswa',
                 color: ApsColor.dashboard2,
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const DetailSiswaViolationScreen()),
+                        builder: (context) => const SiswaViolationScreen()),
                   );
                 },
               ),

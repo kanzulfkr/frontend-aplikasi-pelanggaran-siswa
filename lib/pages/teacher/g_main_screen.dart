@@ -18,7 +18,7 @@ class GuruMainScreen extends StatefulWidget {
 class _GuruMainScreenState extends State<GuruMainScreen> {
   final _screens = [
     const GuruDashboardScreen(),
-    const ViolationScreen(hideTitleV: true),
+    const GuruViolationScreen(hideTitleV: true),
     const ProfileScreen(),
   ];
 

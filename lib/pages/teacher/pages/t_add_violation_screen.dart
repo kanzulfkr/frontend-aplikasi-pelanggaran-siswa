@@ -48,54 +48,57 @@ class _AddViolationScreenState extends State<AddViolationScreen> {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Tambah Data Pelanggaran'),
       backgroundColor: Colors.grey.shade100,
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: ListView(
-            children: [
-              const SizedBox(height: 10),
-              const TitleFormField(title: 'Siswa'),
-              CustomTextFieldStore(
-                controller: storeProv.studentController,
-                hintText: 'Pilih nama siswa',
-                icon: const Icon(Icons.person_2_outlined),
-                isStudentSearch: true,
-                readOnly: true,
-              ),
-              const TitleFormField(title: 'Jenis Pelanggaran'),
-              CustomTextFieldStore(
-                controller: storeProv.violationTypesController,
-                hintText: 'Pilih jenis pelanggaran',
-                icon: const Icon(Icons.file_copy_outlined),
-                isStudentSearch: false,
-                readOnly: true,
-              ),
-              const TitleFormField(title: 'Petugas'),
-              CustomTextFieldStore(
-                controller: storeProv.officerControllerStore,
-                hintText: 'Pilih nama petugas',
-                icon: const Icon(Icons.person_2_outlined),
-                isStudentSearch: false,
-                readOnly: true,
-              ),
-              const TitleFormField(title: 'Catatan'),
-              CustomTextFieldStore(
-                controller: catatanController,
-                hintText: 'Tuliskan catatan',
-                icon: const Icon(Icons.note_alt_outlined),
-                isStudentSearch: false,
-                readOnly: false,
-              ),
-              const SizedBox(height: 20),
-              ButtonStore(
-                formKey: _formKey,
-                studentController: storeProv.studentController,
-                officerController: officerController,
-                catatanController: catatanController,
-              ),
-              const SizedBox(height: 40),
-            ],
+      body: Hero(
+        tag: 'hero',
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ListView(
+              children: [
+                const SizedBox(height: 10),
+                const TitleFormField(title: 'Siswa'),
+                CustomTextFieldStore(
+                  controller: storeProv.studentController,
+                  hintText: 'Pilih nama siswa',
+                  icon: const Icon(Icons.person_2_outlined),
+                  isStudentSearch: true,
+                  readOnly: true,
+                ),
+                const TitleFormField(title: 'Jenis Pelanggaran'),
+                CustomTextFieldStore(
+                  controller: storeProv.violationTypesController,
+                  hintText: 'Pilih jenis pelanggaran',
+                  icon: const Icon(Icons.file_copy_outlined),
+                  isStudentSearch: false,
+                  readOnly: true,
+                ),
+                const TitleFormField(title: 'Petugas'),
+                CustomTextFieldStore(
+                  controller: storeProv.officerControllerStore,
+                  hintText: 'Pilih nama petugas',
+                  icon: const Icon(Icons.person_2_outlined),
+                  isStudentSearch: false,
+                  readOnly: true,
+                ),
+                const TitleFormField(title: 'Catatan'),
+                CustomTextFieldStore(
+                  controller: catatanController,
+                  hintText: 'Tuliskan catatan',
+                  icon: const Icon(Icons.note_alt_outlined),
+                  isStudentSearch: false,
+                  readOnly: false,
+                ),
+                const SizedBox(height: 20),
+                ButtonStore(
+                  formKey: _formKey,
+                  studentController: storeProv.studentController,
+                  officerController: officerController,
+                  catatanController: catatanController,
+                ),
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
         ),
       ),

@@ -68,8 +68,11 @@ class _GuruDashboardScreenState extends State<GuruDashboardScreen> {
                         ),
                       );
                     },
-                    child: const Icon(Icons.notifications_rounded,
-                        color: ApsColor.primaryColor, size: 30),
+                    child: const Hero(
+                      tag: 'tag-notification',
+                      child: Icon(Icons.notifications_rounded,
+                          color: ApsColor.primaryColor, size: 30),
+                    ),
                   ),
                 ],
               ),
@@ -154,7 +157,7 @@ class _GuruDashboardScreenState extends State<GuruDashboardScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          const ViolationScreen(hideTitleV: false),
+                          const GuruViolationScreen(hideTitleV: false),
                     ),
                   );
                 },
