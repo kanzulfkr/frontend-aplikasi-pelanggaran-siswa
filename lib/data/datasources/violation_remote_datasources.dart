@@ -104,6 +104,24 @@ class ViolationRemoteDataSources {
     return response.body;
   }
 
+  Future<String> confirmViolation(int id, String isConfirm) async {
+    final loginToken = await AuthLocalDataSources().getToken();
+    final headers = {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $loginToken',
+    };
+    final body = {
+      'is_confirm': isConfirm,
+    };
+
+    final response = await http.put(
+      Uri.parse('${Variables.baseUrl}/api/violations/confirmation/$id'),
+      headers: headers,
+      body: body,
+    );
+    return response.body;
+  }
+
   Future<String> deleteViolation(int id) async {
     final loginToken = await AuthLocalDataSources().getToken();
     final headers = {

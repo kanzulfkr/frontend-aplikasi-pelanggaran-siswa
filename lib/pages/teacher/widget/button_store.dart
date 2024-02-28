@@ -52,6 +52,7 @@ class ButtonStore extends StatelessWidget {
                         officerId: storeProv.getOfficerIdStore!,
                         catatan: catatanController.text,
                         isValidate: 0,
+                        isConfirm: 0,
                       );
                       context
                           .read<StoreViolationBloc>()

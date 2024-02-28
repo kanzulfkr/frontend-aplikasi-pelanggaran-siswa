@@ -75,22 +75,26 @@ class Violation {
   final int id;
   final String studentName;
   final String officerName;
+  final String officerPhone;
   final String violationsTypesName;
   final int point;
   final String type;
   final String? catatan;
   final int isValidate;
+  final int isConfirm;
   final DateTime createdAt;
 
   Violation({
     required this.id,
     required this.studentName,
     required this.officerName,
+    required this.officerPhone,
     required this.violationsTypesName,
     required this.point,
     required this.type,
     required this.catatan,
     required this.isValidate,
+    required this.isConfirm,
     required this.createdAt,
   });
 
@@ -102,11 +106,13 @@ class Violation {
         id: json["id"],
         studentName: json["student_name"],
         officerName: json["officer_name"],
+        officerPhone: json["officer_phone"],
         violationsTypesName: json["violations_types_name"],
         point: json["point"],
         type: json["type"],
         catatan: json["catatan"],
         isValidate: json["is_validate"],
+        isConfirm: json["is_confirm"],
         createdAt: DateTime.parse(json["created_at"]),
       );
 
@@ -114,11 +120,13 @@ class Violation {
         "id": id,
         "student_name": studentName,
         "officer_name": officerName,
+        "officer_phone": officerPhone,
         "violations_types_name": violationsTypesName,
         "point": point,
         "type": type,
         "catatan": catatan,
         "is_validate": isValidate,
+        "is_confirm": isConfirm,
         "created_at": createdAt.toIso8601String(),
       };
 }

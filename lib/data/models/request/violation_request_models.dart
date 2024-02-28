@@ -6,6 +6,7 @@ class ViolationRequestModel {
   final int? officerId;
   final String? catatan;
   final int? isValidate;
+  final int? isConfirm;
 
   ViolationRequestModel({
     required this.violationsTypesId,
@@ -13,6 +14,7 @@ class ViolationRequestModel {
     required this.officerId,
     required this.catatan,
     required this.isValidate,
+    required this.isConfirm,
   });
 
   factory ViolationRequestModel.fromJson(String str) =>
@@ -27,6 +29,7 @@ class ViolationRequestModel {
         officerId: json["officer_id"],
         catatan: json["catatan"],
         isValidate: json["is_validate"],
+        isConfirm: json["is_confirm"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -35,5 +38,6 @@ class ViolationRequestModel {
         "officer_id": officerId,
         "catatan": catatan,
         "is_validate": isValidate,
+        "is_confirm": isConfirm,
       };
 }

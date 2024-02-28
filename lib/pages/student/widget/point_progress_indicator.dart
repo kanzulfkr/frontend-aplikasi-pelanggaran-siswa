@@ -36,14 +36,15 @@ class ProgressPointIndicator extends StatelessWidget {
       footer: Padding(
         padding: const EdgeInsets.only(top: 30, right: 50, left: 50),
         child: SecondaryButton(
-            name: 'Lihat Detail Pelanggaran',
-            onPress: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SiswaViolationScreen()),
-              );
-            }),
+          name: 'Lihat Detail Pelanggaran',
+          onPress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const SiswaViolationScreen()),
+            );
+          },
+        ),
       ),
     );
   }

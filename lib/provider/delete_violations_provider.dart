@@ -34,4 +34,18 @@ class DeleteViolationProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> confirmViolation(int id, String isConfirm) async {
+    _updateStatus = UpdateStatus.loading;
+    notifyListeners();
+    try {
+      await ViolationRemoteDataSources().confirmViolation(id, isConfirm);
+      _updateStatus = UpdateStatus.success;
+      notifyListeners();
+    } catch (e) {
+      print('Error : $e');
+      _updateStatus = UpdateStatus.error;
+      notifyListeners();
+    }
+  }
 }

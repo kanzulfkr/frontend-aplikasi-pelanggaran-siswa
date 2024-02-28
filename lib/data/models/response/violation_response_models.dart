@@ -46,6 +46,7 @@ class Violation {
   final String? type;
   final String? catatan;
   final int? isValidate;
+  final int? isConfirm;
   final DateTime? createdAt;
 
   Violation({
@@ -60,6 +61,7 @@ class Violation {
     this.type,
     this.catatan,
     this.isValidate,
+    this.isConfirm,
     this.createdAt,
   });
 
@@ -79,6 +81,7 @@ class Violation {
         type: json["type"]!,
         catatan: json["catatan"],
         isValidate: json["is_validate"],
+        isConfirm: json["is_confirm"],
         createdAt: json["created_at"] == null
             ? null
             : DateTime.parse(json["created_at"]),
@@ -96,6 +99,7 @@ class Violation {
         "type": type,
         "catatan": catatan,
         "is_validate": isValidate,
+        "is_confirm": isConfirm,
         "created_at": createdAt?.toIso8601String(),
       };
 }
