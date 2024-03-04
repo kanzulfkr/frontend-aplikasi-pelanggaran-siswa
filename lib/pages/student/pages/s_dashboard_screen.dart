@@ -40,6 +40,7 @@ class _SiswaDashboardScreenState extends State<SiswaDashboardScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: ListView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

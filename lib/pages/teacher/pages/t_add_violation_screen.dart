@@ -55,6 +55,7 @@ class _AddViolationScreenState extends State<AddViolationScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ListView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               children: [
                 const SizedBox(height: 10),
                 const TitleFormField(title: 'Siswa'),

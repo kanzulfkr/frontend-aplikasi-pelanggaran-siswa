@@ -53,7 +53,8 @@ class RoleScreen extends StatelessWidget {
                 onPress: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const Login(textTitle: 'Siswa')),
+                      builder: (context) =>
+                          const Login(textTitle: 'Siswa ataupun Wali Murid')),
                 ),
               ),
               const Spacer(flex: 4),

@@ -45,6 +45,7 @@ class _GuruDashboardScreenState extends State<GuruDashboardScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: ListView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

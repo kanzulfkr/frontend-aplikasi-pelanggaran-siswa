@@ -20,6 +20,8 @@ class _FormInputPasswordState extends State<FormInputPassword> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      scrollPadding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom + 12 * 4),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: widget.passwordController,
       obscureText: !_isVisible,
