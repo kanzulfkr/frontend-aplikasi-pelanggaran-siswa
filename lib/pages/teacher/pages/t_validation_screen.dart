@@ -16,7 +16,6 @@ class ValidationScreen extends StatefulWidget {
 }
 
 class _ValidationScreenState extends State<ValidationScreen> {
-  int counter = 1;
   @override
   void initState() {
     super.initState();
@@ -34,6 +33,7 @@ class _ValidationScreenState extends State<ValidationScreen> {
           return state.maybeWhen(
             loading: () => const LoadingTeacherViolation(hideTitlev: false),
             loaded: (data) {
+              int counterr = 1;
               bool hasUnvalidatedData =
                   data.any((item) => item.isValidate == 0);
               return hasUnvalidatedData
@@ -46,10 +46,10 @@ class _ValidationScreenState extends State<ValidationScreen> {
                             itemCount: data.length,
                             itemBuilder: (context, index) {
                               if (data[index].isValidate == 0) {
-                                int currentCounter = counter++;
+                                int currentCount = counterr++;
                                 return ListTileValidation(
                                   violation: data[index],
-                                  i: currentCounter,
+                                  i: currentCount,
                                 );
                               } else {
                                 return const SizedBox();
